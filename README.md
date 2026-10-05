@@ -1,6 +1,17 @@
-# 12 weeks on the bar
+# 13 weeks on the bar
 
-A 12-week Upper/Lower training log with cardio, daily habits, XP, levels and badges.
+A 13-week Push/Pull training log (5 Oct 2026 – 3 Jan 2027) with Zone 2 walks, steps, the daily neck routine, XP, levels and badges.
+
+## The program
+Based on the app program «Тяни и жми без нагрузки на позвоночник», reviewed and modified (see the Program sheet in the Life OS workbook).
+
+- **Sessions:** Pull A (Mon), Push A (Tue), Pull B (Thu), Push B (Fri). Week 13: Pull B on Wed, Push B on Sat.
+- **3-week wave:** Light 12–15 reps (weeks 1, 4, 8, 11) → Medium 10–12 (2, 5, 9, 12) → Heavy 6–8 (3, 6, 10, 13). Week 7 is a deload: 2 sets, RIR 3–4, −10% load.
+- **Same exercises every week:** each day uses the Light-week exercise set in all week types; only reps, effort and (deload) sets change.
+- **Grey placeholders** show your last set from the same week type (deload shows last Medium −10%). A green ↑ line appears when every set hit the top of the range last time: add 2.5 kg upper / 5 kg legs.
+- **Weekly targets:** steps 7,000 → 10,000 (week 6+), Zone 2 walks Wed/Sat (+Sun from week 3) 30 → 45 min, calories 2,150 → 2,100 (week 8) → maintenance in week 13.
+
+To change the program, edit `EX`, `SESSIONS`, `WTYPE`, `STEPS`, `NECK` and `cardioPlan()` near the top of the script in `index.html`.
 Single-page app, no build step, no server.
 
 ## Use it on your phone
@@ -11,8 +22,9 @@ Open the GitHub Pages link, then
 It opens full-screen and works offline.
 
 ## Sync between phone and computer
-The page saves your log to `log.json` in a **private** repo (default name `training-log-data`).
+The page saves your log to `log-push-pull.json` in a **private** repo (default name `training-log-data`).
 Every save is a commit, so the repo's history is a full version history of your log.
+The old Upper/Lower log stays untouched in `log.json`. Devices that were already connected stay connected.
 
 1. Create a private repo named `training-log-data` (empty is fine).
 2. Create a fine-grained token: GitHub → Settings → Developer settings → Personal access tokens →
