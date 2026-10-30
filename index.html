@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>13 weeks on the bar</title>
+<title>16 weeks on the bar</title>
 <meta name="theme-color" content="#EEF1F4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1A2027" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="13 weeks">
+<meta name="apple-mobile-web-app-title" content="16 weeks">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@ button{font-family:inherit}
 .status{font-size:.85rem;color:var(--muted);margin-top:10px}
 
 /* Week chips */
-.weeks{display:grid;grid-template-columns:repeat(13,minmax(46px,1fr));gap:6px;margin:22px 0 4px;overflow-x:auto;padding:2px 2px 6px}
+.weeks{display:grid;grid-template-columns:repeat(16,minmax(46px,1fr));gap:6px;margin:22px 0 4px;overflow-x:auto;padding:2px 2px 6px}
 .chip{appearance:none;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 4px 8px;font:600 1.2rem/1 var(--display);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:46px}
 .chip.deload{border-style:dashed}
 .chip small{font:600 .68rem/1 var(--body);color:var(--muted);margin-top:-3px}
@@ -99,12 +99,19 @@ button{font-family:inherit}
 .sstatus.done{color:var(--green)}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%}
-.log{min-width:660px}
+.log{min-width:900px}
 th,td{padding:6px 8px;border-top:1px solid var(--line);text-align:left;vertical-align:middle}
 thead th{font-size:.8rem;font-weight:600;color:var(--muted);border-top:none;white-space:nowrap}
 .log tbody th{font-weight:500;min-width:210px;white-space:normal}
 .log td{white-space:nowrap}
+.log td.set{padding:6px 4px}
+.log td.set input[type=number]{width:3.1em}
+.log tbody th{min-width:190px}
 .tip{display:block;font-size:.78rem;color:var(--muted);font-weight:400}
+.tn{display:block;font-size:.78rem;color:var(--ink);font-weight:600}
+.tn:empty{display:none}
+.ston{font-size:.9rem;font-weight:600}
+.weekton{width:100%;margin:2px 0 0;font-weight:600}
 .ru{display:block;font-size:.78rem;color:var(--muted);font-style:italic;font-weight:400}
 .up{display:block;font-size:.8rem;color:var(--green);font-weight:600;white-space:normal}
 .opt{display:inline-block;margin-left:6px;border:1px solid var(--muted);color:var(--muted);font:600 .7rem/1.3 var(--display);padding:0 5px;border-radius:3px;vertical-align:2px;text-transform:uppercase}
@@ -187,7 +194,7 @@ details.rules + details.rules{margin-top:12px}
   .barbell svg{max-width:340px}
   .level b{font-size:1.7rem}
   .stats{margin-top:10px}
-  .weeks{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:12px -12px 0;padding:8px 12px;grid-template-columns:repeat(13,48px);border-bottom:1px solid var(--line)}
+  .weeks{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:12px -12px 0;padding:8px 12px;grid-template-columns:repeat(16,48px);border-bottom:1px solid var(--line)}
   .legend{display:none}
   .weekhead h2{font-size:2.1rem}
   .weekxp{margin-left:0;width:100%;order:4;font-size:1.15rem}
@@ -237,8 +244,8 @@ details.rules + details.rules{margin-top:12px}
 <div class="wrap">
   <header class="hero">
     <div>
-      <h1>13 weeks on the bar</h1>
-      <p class="lede">Push/Pull, four days a week, in 3-week Light, Medium and Heavy waves with a deload in week 7. Plus Zone 2 walks, steps and the daily neck routine. Every session, step goal and PR loads more plates.</p>
+      <h1>16 weeks on the bar</h1>
+      <p class="lede">Back + Delts / Chest + Legs, four days a week, in two 8-week blocks with a deload in weeks 8 and 16. Tonnage is counted for every set. Plus Zone 2 walks, steps and the daily neck routine. Every session, step goal and PR loads more plates.</p>
       <dl class="stats" id="stats"></dl>
       <p class="status" id="status">Loading your log…</p>
     </div>
@@ -251,12 +258,12 @@ details.rules + details.rules{margin-top:12px}
   </header>
 
   <nav class="weeks" id="weeks" aria-label="Choose week"></nav>
-  <p class="legend">L, M, H = Light, Medium, Heavy week. Bars under each week fill with the session colour when done. Solid weeks are perfect weeks, the dashed one is the deload, the underlined one is this week.</p>
+  <p class="legend">Cal = calibration week, B = build week, DL = deload. Bars under each week fill with the session colour when done. Solid weeks are perfect weeks, dashed ones are deloads, the underlined one is this week.</p>
 
   <main id="panel"></main>
 
   <section class="lower">
-    <h2>13-week overview</h2>
+    <h2>16-week overview</h2>
     <div class="scroll"><table class="overview" id="overview"></table></div>
   </section>
 
@@ -266,17 +273,18 @@ details.rules + details.rules{margin-top:12px}
     <details class="rules">
       <summary>Program rules</summary>
       <table>
-        <thead><tr><th>Week type</th><th>Reps</th><th>Compounds</th><th>Isolation</th><th>Weeks</th></tr></thead>
+        <thead><tr><th>Week type</th><th>What to do</th><th>Weeks</th></tr></thead>
         <tbody>
-          <tr><td>Light</td><td>12–15</td><td>RIR 1–2</td><td>RIR 1–2</td><td>1, 4, 8, 11</td></tr>
-          <tr><td>Medium</td><td>10–12</td><td>RIR 1–2</td><td>RIR 1–2</td><td>2, 5, 9, 12</td></tr>
-          <tr><td>Heavy</td><td>6–8</td><td>RIR 1, not failure</td><td>Last set to failure</td><td>3, 6, 10, 13</td></tr>
-          <tr><td>Deload</td><td>10–12</td><td>RIR 3–4</td><td>RIR 3–4</td><td>7 (2 sets, −10% load)</td></tr>
+          <tr><td>Calibration</td><td>Find working weights, every set at RIR 3</td><td>1</td></tr>
+          <tr><td>Build</td><td>Sets, reps, RIR and rest as listed per exercise</td><td>2–7, 9–15</td></tr>
+          <tr><td>Deload</td><td>Same weights, about half the sets, RIR 3+</td><td>8, 16</td></tr>
         </tbody>
       </table>
-      <p><b>Progression:</b> double progression. When every set hits the top of the rep range at the target RIR, add 2.5 kg (upper body) or 5 kg (legs) next time in the same week type. The app flags this with a green ↑ line. RIR = reps in reserve: RIR 1 means one more rep was possible.</p>
-      <p><b>Exercises:</b> every week type (Light, Medium, Heavy and the deload) uses the same exercises per day. Only reps, effort and, in the deload, sets change.</p>
-      <p><b>Rest:</b> 2–3 min on compounds, 60–90 s on isolation.</p>
+      <p><b>Split:</b> Back + Delts A (Mon), Chest + Legs A (Tue), Back + Delts B (Thu), Chest + Legs B (Fri). Week 1 only: Back + Delts A on Sat 31 Oct and Chest + Legs A on Mon 2 Nov. Weeks run Saturday to Friday.</p>
+      <p><b>Progression:</b> double progression. Add reps first. When every set hits the top of the range, add weight next time: about 2 kg per dumbbell, 2.5 kg on cables and machines, 5–10 kg on leg machines. The app flags it with a green ↑ line. RIR = reps in reserve: RIR 1 means one more rep was possible.</p>
+      <p><b>Deload early</b> if your main lifts stall or drop two sessions in a row, joints ache, or sleep and motivation crash. In a calorie deficit, holding your strength is already a win.</p>
+      <p><b>Exercises:</b> the same every week. Only the deload changes the sets.</p>
+      <p><b>Rest:</b> as listed per exercise. If a session runs past 75 min, shorten rest on isolation work first.</p>
       <p><b>Neck and posture routine</b> (daily, 8–10 min, morning):</p>
       <ol class="neck">
         <li>Chin tucks, 10 × 5–10 s hold. Glide the head straight back, no tilting.</li>
@@ -287,6 +295,20 @@ details.rules + details.rules{margin-top:12px}
         <li>Upper-trap and levator stretch, 2 × 30 s each side. Gentle, no fast neck circles.</li>
       </ol>
       <p class="hint">See a neurologist if you get pain or numbness into the arm, hand weakness, or dizziness or headaches with neck movement.</p>
+    </details>
+    <details class="rules">
+      <summary>How tonnage works</summary>
+      <p>Tonnage = weight × reps, added up over every logged set, as in Goncharov's «Тренируйся!». Avg kg per rep = tonnage ÷ reps.</p>
+      <table>
+        <tbody>
+          <tr><td>Barbell, Smith, machine, cable stack</td><td>kg × reps</td></tr>
+          <tr><td>Dumbbells in both hands (kg = one dumbbell)</td><td>kg × 2 × reps</td></tr>
+          <tr><td>One arm at a time (kg and reps per arm)</td><td>kg × reps × 2 arms</td></tr>
+          <tr><td>Pull-ups</td><td>(bodyweight + added kg, or minus assistance) × reps. Bodyweight = your latest weekly check-in, 104 kg until you log one</td></tr>
+          <tr><td>Hanging knee raise</td><td>Not counted</td></tr>
+        </tbody>
+      </table>
+      <p>Use it as a trend against your own past weeks. The book aims for +0.5–1 t a week on average over 2–3 months; in a calorie deficit, holding steady is fine. Deload weeks drop on purpose. Machines like the leg press inflate tonnage, so don't compare your numbers with anyone else's.</p>
     </details>
     <details class="rules">
       <summary>How XP works</summary>
@@ -323,7 +345,7 @@ details.rules + details.rules{margin-top:12px}
         <div class="syncrow"><button type="button" class="btn" id="ghSyncNow">Sync now</button><button type="button" class="btn" id="ghDisconnect">Disconnect this device</button></div>
       </div>
     </div>
-    <p class="hint">Download your full history for Excel or Google Sheets, or move your log with a backup file.</p>
+    <p class="hint">Download your full history for Excel or Google Sheets, or move your log with a backup file. Your previous Push/Pull log (5–30 Oct) is still saved: <a href="push-pull.html">open the Push/Pull log</a>.</p>
     <div class="backup">
       <button type="button" class="btn solid" id="historyBtn">Download history (Excel)</button>
       <button type="button" class="btn" id="exportBtn">Export backup</button>
@@ -340,125 +362,130 @@ details.rules + details.rules{margin-top:12px}
 (function(){
 "use strict";
 
-/* ---------- Program: "Тяни и жми без нагрузки на позвоночник", reviewed and modified ---------- */
-const NW = 13;
-const START = new Date(2026, 9, 5); // Monday 5 Oct 2026 = week 1
+/* ---------- Program: Back + Delts / Chest + Legs (see the "Men's Physique Program" doc) ---------- */
+const NW = 16;
+const START = new Date(2026, 9, 31); // Saturday 31 Oct 2026 = first day of week 1
+const DAYS = ["Sat","Sun","Mon","Tue","Wed","Thu","Fri"]; // weeks run Saturday to Friday
 const TYPES = {
-  L:{name:"Light",  reps:"12–15", top:15, comp:"RIR 1–2", iso:"RIR 1–2"},
-  M:{name:"Medium", reps:"10–12", top:12, comp:"RIR 1–2", iso:"RIR 1–2"},
-  H:{name:"Heavy",  reps:"6–8",   top:8,  comp:"RIR 1, not failure", iso:"Last set to failure"},
-  D:{name:"Deload", reps:"10–12", top:12, comp:"RIR 3–4, −10% load", iso:"RIR 3–4, −10% load"}
+  C:{name:"Calibration", short:"Cal"},
+  B:{name:"Build",       short:"B"},
+  D:{name:"Deload",      short:"DL"}
 };
-const WTYPE = [null,"L","M","H","L","M","H","D","L","M","H","L","M","H"];
-const CYCLE = [null,1,1,1,2,2,2,0,3,3,3,4,4,4];
-const WAVES = [[1,2,3],[4,5,6],[8,9,10],[11,12,13]];
+const WTYPE = [null,"C","B","B","B","B","B","B","D","B","B","B","B","B","B","B","D"];
+const BLOCK = [null,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2];
+const BLOCKS = [[1,2,3,4,5,6,7],[9,10,11,12,13,14,15]];
+const DEFAULT_BW = 104; // kg, used for pull-up tonnage until a weekly weight is logged
+const KCAL = 2200, PROTEIN = 180;
 
-// c = compound (2–3 min rest, RIR cap), legs = +5 kg steps, lat = side-delt raise, opt = optional
+// c = compound, legs = +5 kg steps, lat = side-delt raise, opt = optional,
+// mode: "pair" = kg of one dumbbell / one side, both arms together (tonnage ×2 load),
+//       "uni"  = one arm at a time, kg and reps per arm (tonnage ×2 reps),
+// bw = bodyweight exercise (bodyweight + kg), noTn = not counted in tonnage, inc = load step for the ↑ hint
 const EX = {
-  latwide:   {n:"Lat pulldown, wide grip", ru:"Тяга вертикального блока", c:1},
-  latneutral:{n:"Neutral-grip lat pulldown", ru:"Тяга верт. блока параллельным хватом", c:1},
-  pullup:    {n:"Neutral-grip pull-up", ru:"Подтягивания параллельным хватом", c:1, tip:"Assisted if under 6 reps. Assisted machine: enter assistance as negative kg. Bodyweight: 0."},
-  standlat:  {n:"Standing DB lateral raise", ru:"Отведение гантелей в стороны", lat:1},
-  cablerow:  {n:"Seated cable row", ru:"Тяга блока к поясу", c:1},
-  dbrow:     {n:"1-arm DB row, chest-supported on bench", ru:"Тяга гантели в наклоне", c:1},
-  backext:   {n:"Back extension 45°", ru:"Экстензия", tip:"Hands on chest, never behind the head. Bodyweight: 0 kg."},
-  facepull:  {n:"Face pull, rope", tip:"Superset with the curls."},
-  conccurl:  {n:"Concentration curl", ru:"Концентрированное сгибание"},
-  ezcurl:    {n:"EZ / barbell curl", ru:"Сгибание штанги стоя"},
-  cablecrunch:{n:"Cable crunch, kneeling"},
-  legpress:  {n:"Leg press", ru:"Жим ногами", c:1, legs:1, tip:"Head relaxed on the pad."},
-  legcurl:   {n:"Lying / seated leg curl", legs:1},
-  bench:     {n:"Bench press, medium grip", ru:"Жим штанги лёжа", c:1, tip:"Medium grip, not wide (shoulder safety)."},
-  cablelat:  {n:"1-arm cable lateral raise", lat:1},
-  inclfly:   {n:"Incline DB fly", opt:1, tip:"Optional: skip it if you're out of gas."},
-  pushdown:  {n:"Cable triceps pushdown", ru:"Разгибание в блоке"},
-  ohext:     {n:"Seated overhead DB extension, back supported", ru:"Разгибание гантели из-за головы", tip:"Neck neutral. Swap to cable if the neck complains."},
-  french:    {n:"French press, EZ bar", ru:"Французский жим"},
-  seatlat:   {n:"Seated DB lateral raise, back supported", lat:1},
-  revpec:    {n:"Reverse pec deck"},
-  cablecurl: {n:"Cable curl", ru:"Сгибание рук в блоке"},
-  dbcurl:    {n:"DB curl, standing", ru:"Сгибание рук с гантелями стоя"},
-  kneeraise: {n:"Hanging knee raise / captain's chair"},
-  legext:    {n:"Leg extension", ru:"Разгибание ног сидя", legs:1},
-  incbench:  {n:"Incline barbell press", ru:"Жим штанги в наклоне", c:1, tip:"First press of the day: upper chest is the priority."},
-  dbpress:   {n:"Seated DB press, back supported", ru:"Жим гантелей сидя", c:1, tip:"Neck neutral, no forward head."},
-  machlat:   {n:"Machine or DB lateral raise", lat:1},
-  pecdeck:   {n:"Pec deck", ru:"Тренажёр бабочка"}
+  pullup:     {n:"Pull-up (assisted if needed)", ru:"Подтягивания", c:1, bw:1, tip:"Straps are fine. Bodyweight: 0 kg. Assisted machine: assistance as negative kg. Added weight: positive kg."},
+  csrow:      {n:"Chest-supported row (T-bar or machine)", ru:"Тяга с упором грудью", c:1, tip:"Pull to the lower ribs, squeeze the shoulder blades."},
+  latwide:    {n:"Wide-grip lat pulldown", ru:"Тяга верхнего блока широким хватом", tip:"Drive the elbows down to your sides, slight lean back."},
+  dbpress:    {n:"Seated DB shoulder press", ru:"Жим гантелей сидя", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Back supported. On the machine, enter half the stack."},
+  cablelat:   {n:"Cable lateral raise, one arm", ru:"Отведение в сторону в кроссовере", lat:1, mode:"uni", tip:"kg and reps per arm. Cable behind the body, lead with the elbow, no swinging."},
+  revpec:     {n:"Reverse pec deck", ru:"Обратная бабочка", tip:"Rear delts: they make the shoulder look round from the side."},
+  inclcurl:   {n:"Incline DB curl", ru:"Сгибания на наклонной скамье", mode:"pair", inc:2, tip:"kg = one dumbbell. Arms hang behind the body for a full stretch."},
+  incdb:      {n:"Incline DB press, 30°", ru:"Жим гантелей на наклонной", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Main upper-chest lift: elbows ~45°, deep stretch at the bottom."},
+  chestpress: {n:"Machine or flat DB press", ru:"Жим в тренажёре / гантелей лёжа", tip:"Machine: the stack. Dumbbells: both added together. Mid chest, controlled tempo."},
+  lhfly:      {n:"Low-to-high cable fly", ru:"Сведение в кроссовере снизу вверх", mode:"pair", tip:"kg = one side. Hands finish at chin height: upper chest."},
+  hack:       {n:"Hack squat (or leg press, feet mid-low)", ru:"Гакк-приседания", c:1, legs:1, tip:"Full depth you can control, 2–3 s down."},
+  seatcurl:   {n:"Seated leg curl", ru:"Сгибание ног сидя", legs:1, tip:"Lean forward a little for a bigger stretch."},
+  ohcable:    {n:"Overhead cable triceps extension", ru:"Разгибание из-за головы в блоке", tip:"Long head, the biggest part of the triceps."},
+  cablecrunch:{n:"Cable crunch", ru:"Скручивания в блоке", opt:1, tip:"Optional if time. Round the spine, don't pull with the arms."},
+  latneutral: {n:"Neutral-grip lat pulldown", ru:"Тяга верхнего блока параллельным хватом", c:1, tip:"Pull to the upper chest, elbows close to the body."},
+  cablerow1:  {n:"One-arm cable row (or bench-supported DB row)", ru:"Тяга блока одной рукой", c:1, mode:"uni", tip:"kg and reps per arm. Pull the elbow toward your hip."},
+  widerow:    {n:"Seated cable row, wide grip", ru:"Тяга нижнего блока широким хватом", c:1, tip:"Elbows out at ~60°: mid back and rear delts."},
+  leanlat:    {n:"Lean-away DB lateral raise or lateral machine", ru:"Отведение гантели в сторону с наклоном", lat:1, mode:"uni", inc:2, tip:"kg and reps per arm. Last set: drop the weight 30% and keep going (log the main part)."},
+  facepull:   {n:"Face pull or rear-delt cable fly", ru:"Тяга к лицу", tip:"Rear delts and shoulder health."},
+  ezcurl:     {n:"EZ-bar curl", ru:"Сгибание со штангой EZ", tip:"Elbows still, no swinging."},
+  hammer:     {n:"Hammer curl", ru:"Молотки", mode:"pair", inc:2, tip:"kg = one dumbbell."},
+  incsmith:   {n:"Incline Smith or machine press, 15–30°", ru:"Жим в Смите на наклонной", c:1, tip:"Second upper-chest hit of the week. kg = total on the bar."},
+  inclfly:    {n:"Incline DB fly or pec deck", ru:"Разводка на наклонной / бабочка", tip:"Pec deck: the stack. Dumbbells: both added together. Deep stretch, slow lowering."},
+  legpress:   {n:"Leg press, feet high and wide", ru:"Жим ногами", c:1, legs:1, tip:"Shifts the work to glutes and hamstrings."},
+  lyingcurl:  {n:"Lying leg curl", ru:"Сгибание ног лёжа", legs:1, tip:"Hips pressed into the pad."},
+  pushdown:   {n:"Rope triceps pushdown", ru:"Разгибание с канатом", tip:"Spread the rope at the bottom."},
+  calf:       {n:"Seated calf raise", ru:"Подъём на носки сидя", opt:1, legs:1, tip:"Optional if time. Pause at the bottom."},
+  kneeraise:  {n:"Hanging knee raise", ru:"Подъём коленей в висе", noTn:1, tip:"Leave kg empty. Not counted in tonnage."}
 };
-// [exercise, sets, {tip: session-specific cue}]. The Light-week exercise set is used in every week type.
+// [exercise, sets, reps, RIR, rest]. Same exercises every week; the deload halves the sets.
 const SESSIONS = [
-  {id:"PLA",name:"Pull A",day:"Mon",focus:"Lats, side delts, biceps, abs",plate:"red",ex:[
-    ["latwide",4],["standlat",4],["cablerow",3],["backext",3],["facepull",3],["conccurl",3],["ezcurl",3],["cablecrunch",3]]},
-  {id:"PSA",name:"Push A",day:"Tue",focus:"Legs, chest, side delts, triceps",plate:"blue",ex:[
-    ["legpress",3],["legcurl",3,{tip:"Superset in the leg press rest."}],["bench",4],["cablelat",3],["inclfly",3],["pushdown",3],["french",3]]},
-  {id:"PLB",name:"Pull B",day:"Thu",focus:"Lat width, side and rear delts, biceps",plate:"yellow",ex:[
-    ["latneutral",4],["seatlat",3],["dbrow",4],["backext",3],["revpec",3],["cablecurl",3],["dbcurl",3],["kneeraise",3]]},
-  {id:"PSB",name:"Push B",day:"Fri",focus:"Upper chest, delts, triceps, legs",plate:"green",ex:[
-    ["legext",3],["legcurl",3,{tip:"Superset with the leg extension."}],["incbench",4],["dbpress",3],["machlat",3],["pecdeck",3],["ohext",3],["french",3]]}
+  {id:"BDA",name:"Back + Delts A",day:"Mon",day1:"Sat",focus:"Lat width, side and rear delts, biceps",plate:"red",ex:[
+    ["pullup",3,"6–10","RIR 1–2","2–3 min"],["csrow",3,"8–12","RIR 1–2","2 min"],["latwide",3,"10–12","RIR 1–2","90 s"],
+    ["dbpress",2,"8–10","RIR 1–2","2 min"],["cablelat",5,"12–15","RIR 0–1","60 s"],["revpec",3,"15–20","RIR 0–1","60 s"],["inclcurl",3,"10–12","RIR 0–1","60 s"]]},
+  {id:"CLA",name:"Chest + Legs A",day:"Tue",day1:"Mon",focus:"Upper chest, quads, triceps",plate:"blue",ex:[
+    ["incdb",3,"6–10","RIR 1–2","2–3 min"],["chestpress",2,"8–12","RIR 1","2 min"],["lhfly",2,"12–15","RIR 0–1","60 s"],
+    ["hack",3,"8–12","RIR 1–2","2–3 min"],["seatcurl",3,"10–12","RIR 1","90 s"],["ohcable",3,"10–15","RIR 0–1","60 s"],["cablecrunch",2,"12–15","RIR 1","60 s"]]},
+  {id:"BDB",name:"Back + Delts B",day:"Thu",day1:"Thu",focus:"Back thickness, side and rear delts, biceps",plate:"yellow",ex:[
+    ["latneutral",3,"8–12","RIR 1–2","2 min"],["cablerow1",3,"10–12","RIR 1–2","90 s"],["widerow",3,"10–12","RIR 1–2","90 s"],
+    ["leanlat",5,"12–20","RIR 0–1","60 s"],["facepull",3,"15–20","RIR 0–1","60 s"],["ezcurl",3,"8–12","RIR 0–1","60 s"],["hammer",2,"10–12","RIR 0–1","60 s"]]},
+  {id:"CLB",name:"Chest + Legs B",day:"Fri",day1:"Fri",focus:"Upper chest, hamstrings and glutes, triceps",plate:"green",ex:[
+    ["incsmith",3,"8–10","RIR 1–2","2–3 min"],["inclfly",3,"12–15","RIR 0–1","60 s"],["legpress",3,"10–12","RIR 1–2","2 min"],
+    ["lyingcurl",3,"10–12","RIR 1","90 s"],["pushdown",3,"10–12","RIR 0–1","60 s"],["calf",3,"12–15","RIR 0–1","60 s"],["kneeraise",3,"10–15","RIR 1","60 s"]]}
 ];
-const DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const MAXSETS = 5;
 const XP = {session:100,pr:15,z2:50,z2full:10,walk:10,steps:10,neck:5,checkin:20,perfect:100};
 const LOADS = [20,40,60,80,100,120,140,160,180,200];
-const THR   = [0,250,700,1400,2300,3400,4700,6200,7900,9500];
-const LS_KEY = "pp-13wk-pushpull-log-v1", LS_UI = "pp-13wk-pushpull-ui-v1";
-const STEPS = [null,7000,7500,8000,8500,9000,10000,10000,10000,10000,10000,10000,10000,8000];
-const NECK = [null,
-  "Base protocol (bodyweight), 8 min a day.",
-  "Base protocol, add 2 s to each hold.",
-  "Add the supine head-lift chin tuck, 2 × 8.",
-  "Isometrics at 50% effort.",
-  "Light band isometrics, 3 × 10 s each side.",
-  "Band isometrics plus wall angels 3 × 10.",
-  "Keep it going. Note your neck-pain trend (0–10).",
-  "Add the prone W-raise, 2 × 12.",
-  "Keep it going. Reassess your pain score.",
-  "Keep it going.","Keep it going.","Keep it going.",
-  "Keep it going. Rate neck pain against 5 October."];
+const THR   = [0,300,800,1600,2700,4000,5500,7200,9100,11000];
+const LS_KEY = "bd-16wk-log-v1", LS_UI = "bd-16wk-ui-v1";
+const STEPS = [null,9000,9500,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000];
+const NECK = [null]; for (let w=1; w<=NW; w++) NECK[w] = w === 1 ? "Keep the full routine going, 8–10 min each morning." : "Full routine, 8–10 min each morning.";
 
 function plan(w, S){
-  const t = WTYPE[w], T = TYPES[t];
-  return S.ex.map(([key0, sets, o])=>{
-    o = o || {};
-    const key = key0, L = EX[key];
-    return {key, k:S.id + ":" + key, n:L.n, ru:L.ru || "", sets: t === "D" ? 2 : sets, reps:T.reps, top:T.top,
-      effort: L.c ? T.comp : T.iso, rest: L.c ? "2–3 min" : "60–90 s", tip: o.tip || L.tip || "",
-      c:!!L.c, legs:!!L.legs, lat:!!L.lat, opt:!!L.opt};
+  const t = WTYPE[w];
+  return S.ex.map(([key, sets, reps, rir, rest])=>{
+    const L = EX[key];
+    return {key, k:S.id + ":" + key, n:L.n, ru:L.ru || "", sets: t === "D" ? Math.ceil(sets/2) : sets, reps, top:Number(String(reps).split("–").pop()),
+      effort: t === "C" ? "RIR 3" : (t === "D" ? "RIR 3+" : rir), rest, tip: L.tip || "",
+      c:!!L.c, legs:!!L.legs, lat:!!L.lat, opt:!!L.opt, mode:L.mode || "", bw:!!L.bw, noTn:!!L.noTn, inc: L.inc || (L.legs ? 5 : 2.5)};
   });
 }
-function sessionDay(w, S){
-  if (w === 13 && S.id === "PLB") return "Wed";
-  if (w === 13 && S.id === "PSB") return "Sat";
-  return S.day;
-}
+function sessionDay(w, S){ return w === 1 ? S.day1 : S.day; }
 function dayDate(w, day){ const d = new Date(START); d.setDate(d.getDate() + (w-1)*7 + DAYS.indexOf(day)); return d; }
 function fmtD(d){ return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }
-function weekRange(w){ return fmtD(dayDate(w,"Mon")) + " – " + fmtD(dayDate(w,"Sun")); }
+function weekRange(w){ return fmtD(dayDate(w,DAYS[0])) + " – " + fmtD(dayDate(w,DAYS[6])); }
 function todayWeek(){
   const now = new Date(), t = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const w = Math.floor(Math.round((t - START) / 86400000) / 7) + 1;
   return (w >= 1 && w <= NW) ? w : null;
 }
-function kcal(w){ return w <= 7 ? 2150 : (w <= 12 ? 2100 : 2850); }
+function kcal(w){ return KCAL; }
+// Zone 2 walks: Wed plus the weekend. Week 1's Saturday is a gym day.
 function cardioPlan(w){
-  const min = w <= 2 ? 30 : (w <= 6 ? 40 : 45);
-  const days = w <= 2 ? ["Wed","Sat"] : (w === 13 ? ["Thu","Sun"] : ["Wed","Sat","Sun"]);
-  return days.map((d,i)=>({id:"c"+(i+1), day:d, min}));
+  const days = w === 1 ? ["Sun","Wed"] : ["Sat","Sun","Wed"];
+  return days.map((d,i)=>({id:"c"+(i+1), day:d, min:40}));
 }
 function meta(w){
   const t = WTYPE[w], T = TYPES[t];
   const deload = t === "D";
-  const phase = deload ? "Deload" : "Cycle " + CYCLE[w] + " · " + T.name;
+  const phase = "Block " + BLOCK[w] + " · " + T.name;
   let note = "";
-  if (w===1) note = "Light week: 12–15 reps at RIR 1–2, focus on technique and pump. From week 4 the grey numbers show your last set from the same week type, so Light is compared with Light.";
-  if (w===2) note = "Medium week: 10–12 reps at RIR 1–2.";
-  if (w===3) note = "First Heavy week: 6–8 reps. Compounds stop at RIR 1 (one more rep possible), not failure. Only the last set of isolation work goes to failure. Sunday walk starts this week.";
-  if (w===6) note = "Steps reach 10,000 a day from this week.";
-  if (w===7) note = "Deload: 2 sets per exercise, 10–12 reps, RIR 3–4, about 10% lighter. The grey numbers are already your last Medium loads minus 10%. You come back stronger.";
-  if (w===8) note = "Calories go to 2,100 a day. The prone W-raise joins the neck routine.";
-  if (w===11) note = "Optional on Saturday's walk: 6 × 1 min brisk.";
-  if (w===13) note = "Holiday week: Pull B moves to Wednesday and Push B to Saturday, walks on Thursday and Sunday. Eat at maintenance (about 2,850 kcal) as a planned diet break, then resume the deficit on 4 January.";
+  if (w===1) note = "Calibration week. First session: Back + Delts A on Saturday 31 Oct, then Chest + Legs A on Monday 2 Nov (this week only). Find your working weights and stop every set at RIR 3. From week 2 you train Mon, Tue, Thu and Fri.";
+  if (w===2) note = "Build weeks start: work at the RIR shown in each row. Add reps first; when every set hits the top of the range, add weight (the green ↑ line tells you).";
+  if (w===8) note = "Deload: same weights, about half the sets, RIR 3+. Tonnage drops on purpose. You come back stronger.";
+  if (w===9) note = "Block 2: same exercises, beat your block 1 numbers. Holiday week: if the gym is closed on 1 Jan, move Chest + Legs B to Saturday 2 Jan.";
+  if (w===16) note = "Final deload. Take photos and measurements and compare with week 1.";
   return {t, T, deload, phase, steps:STEPS[w], kcal:kcal(w), cardio:cardioPlan(w), neck:NECK[w], note};
 }
+
+/* ---------- Tonnage (Goncharov: volume = kg × reps; intensity = volume ÷ reps) ---------- */
+function bwFor(w){ for (let p=w; p>=1; p--){ const x = state.weeks[p].weight; if (x > 0) return x; } return DEFAULT_BW; }
+function setTon(E, st, bw){
+  if (!st || !(st.r > 0) || E.noTn) return null;
+  const kg = st.kg || 0;
+  let load = kg, reps = st.r;
+  if (E.bw) load = bw + kg;
+  else if (E.mode === "pair") load = kg * 2;
+  else if (E.mode === "uni") reps = st.r * 2;
+  if (!(load > 0)) return null;
+  return {v: load * reps, n: reps};
+}
+function fmtT(v){ return (v/1000).toFixed(1) + " t"; }
+function fmtKg(v){ return Math.round(v).toLocaleString("en-US") + " kg"; }
+function fmtDelta(d){ return Math.abs(d) < 50 ? "same as" : (d > 0 ? "▲ " : "▼ ") + (Math.abs(d)/1000).toFixed(1) + " t vs"; }
 
 /* ---------- State ---------- */
 function blankWeek(w){
@@ -510,23 +537,7 @@ const state = {weeks:[null], updated:{}};
     const t = saved && saved.updated && Number(saved.updated[w]);
     if (t > 0) state.updated[w] = t;
   }
-  if (!saved) seedWeek1();
 })();
-// Pull A on 5 Oct and Monday's steps/neck routine, as logged in the Life OS workbook.
-// No timestamp, so a synced copy from another device always wins over this seed.
-function seedWeek1(){
-  const wk = state.weeks[1], s = wk.s.PLA;
-  const put = (key, rows)=>{ rows.forEach((r,i)=>{ s.sets[key][i] = {kg:r[0], r:r[1]}; }); };
-  put("latwide",  [[50,15],[50,15],[50,15],[50,15]]);
-  put("standlat", [[10,12],[10,12],[10,12],[10,12]]);
-  put("cablerow", [[60,13],[60,13],[60,13]]);
-  put("backext",  [[0,15],[0,15],[0,15]]);
-  put("facepull", [[15,15],[15,15],[15,15]]);
-  put("conccurl", [[12.5,12],[12.5,12],[12.5,12]]);
-  put("ezcurl",   [[25,12],[25,12],[25,10]]);
-  s.done = true; s.date = "5 Oct";
-  wk.steps[0] = 8032; wk.neck[0] = true;
-}
 const ui = {week:1};
 function firstOpenWeek(){ for (let w=1; w<=NW; w++){ if (SESSIONS.some(S=>!state.weeks[w].s[S.id].done)) return w; } return NW; }
 (function pickWeek(){
@@ -555,7 +566,7 @@ function setStatus(kind, msg){
   statusEl.textContent = t[kind] || "";
 }
 function writeLocal(){ try { localStorage.setItem(LS_KEY, JSON.stringify({weeks:state.weeks, updated:state.updated})); } catch(e) {} }
-function docRef(w){ return db.collection("data/users/" + uid).doc("pp-week-" + String(w).padStart(2,"0")); }
+function docRef(w){ return db.collection("data/users/" + uid).doc("bd-week-" + String(w).padStart(2,"0")); }
 function save(w){
   state.updated[w] = Date.now();
   writeLocal();
@@ -591,7 +602,7 @@ async function initDb(){
     db = d; uid = id;
     const snap = await db.collection("data/users/" + uid).get();
     const remote = {};
-    snap.docs.forEach(doc=>{ const m = /^pp-week-(\d\d)$/.exec(doc.id); if (m && doc.exists) remote[Number(m[1])] = doc.data(); });
+    snap.docs.forEach(doc=>{ const m = /^bd-week-(\d\d)$/.exec(doc.id); if (m && doc.exists) remote[Number(m[1])] = doc.data(); });
     dbReady = true;
     const toPush = [];
     for (let w=1; w<=NW; w++){
@@ -616,27 +627,35 @@ function score(kg, r){
   return k > 0 ? k * (1 + r/30) : r/1000 + k/100;
 }
 function compute(){
-  const best = {}, prs = {}, weeks = [null];
-  let xp = 0, prCount = 0, sessionsDone = 0, z2 = 0, neckDays = 0, latSets = 0, stepWeek = false;
+  const best = {}, prs = {}, weeks = [null], ton = [null];
+  let xp = 0, prCount = 0, sessionsDone = 0, z2 = 0, neckDays = 0, latSets = 0, stepWeek = false, maxSess = 0, maxWeek = 0;
   const full = [null], weights = [], waists = [];
   for (let w=1; w<=NW; w++){
-    const wk = state.weeks[w], m = meta(w);
+    const wk = state.weeks[w], m = meta(w), bw = bwFor(w);
     let x = 0, sdone = 0; prs[w] = {};
+    const T = {v:0, n:0, s:{}, e:{}};
     SESSIONS.forEach(S=>{
       const ss = wk.s[S.id];
       if (ss.done){ sdone++; x += XP.session; }
       if (ss.walk) x += XP.walk;
+      let sv = 0, sn = 0;
       plan(w,S).forEach(E=>{
-        let wb = -Infinity, any = false;
+        let wb = -Infinity, any = false, ev = 0, en = 0;
         (ss.sets[E.key] || []).forEach(st=>{
           if (st && st.r > 0){ any = true; const sc = score(st.kg, st.r); if (sc > wb) wb = sc; if (E.lat) latSets++; }
+          const tt = setTon(E, st, bw); if (tt){ ev += tt.v; en += tt.n; }
         });
+        T.e[E.k] = {v:ev, n:en}; sv += ev; sn += en;
         if (any){
           if (best[E.k] !== undefined && wb > best[E.k] + 1e-9){ prs[w][E.k] = true; prCount++; x += XP.pr; }
           if (best[E.k] === undefined || wb > best[E.k]) best[E.k] = wb;
         }
       });
+      T.s[S.id] = {v:sv, n:sn}; T.v += sv; T.n += sn;
+      if (sv > maxSess) maxSess = sv;
     });
+    if (T.v > maxWeek) maxWeek = T.v;
+    ton[w] = T;
     sessionsDone += sdone;
     let cdone = 0;
     const creq = m.cardio.length;
@@ -663,23 +682,25 @@ function compute(){
   let streak = 0, bestStreak = 0;
   for (let w=1; w<=NW; w++){ streak = full[w] ? streak+1 : 0; if (streak > bestStreak) bestStreak = streak; }
   const fullWeeks = full.filter(Boolean).length;
-  const wave = WAVES.some(ws=>ws.every(w=>full[w]));
+  const block = BLOCKS.some(ws=>ws.every(w=>full[w]));
   const badges = [
     {name:"First rep", desc:"Finish your first session", plate:"red", ok: sessionsDone >= 1},
     {name:"Full house", desc:"All 4 sessions in one week", plate:"blue", ok: fullWeeks >= 1},
-    {name:"Wave rider", desc:"Every session of one Light–Medium–Heavy wave", plate:"yellow", ok: wave},
+    {name:"Block builder", desc:"Every session of a 7-week build block", plate:"yellow", ok: block},
     {name:"Iron streak", desc:"4 full weeks in a row", plate:"red", ok: bestStreak >= 4},
-    {name:"Engine", desc:"20 Zone 2 walks", plate:"green", ok: z2 >= 20},
+    {name:"Twelve-tonner", desc:"12 t of tonnage in one session", plate:"blue", ok: maxSess >= 12000},
+    {name:"Fifty-tonne week", desc:"50 t of tonnage in one week", plate:"red", ok: maxWeek >= 50000},
+    {name:"Engine", desc:"30 Zone 2 walks", plate:"green", ok: z2 >= 30},
     {name:"Step machine", desc:"Hit the step target 7/7 days in a week", plate:"green", ok: stepWeek},
-    {name:"Neck guardian", desc:"30 days of neck routine", plate:"blue", ok: neckDays >= 30},
-    {name:"PR hunter", desc:"10 personal records", plate:"red", ok: prCount >= 10},
-    {name:"Boulder shoulders", desc:"150 lateral raise sets logged", plate:"yellow", ok: latSets >= 150},
-    {name:"Scale mover", desc:"Weekly weight 3% below your first check-in", plate:"blue", ok: weights.length>1 && weights[weights.length-1] <= weights[0]*0.97},
+    {name:"Neck guardian", desc:"60 days of neck routine", plate:"blue", ok: neckDays >= 60},
+    {name:"PR hunter", desc:"15 personal records", plate:"red", ok: prCount >= 15},
+    {name:"Boulder shoulders", desc:"120 lateral raise sets logged", plate:"yellow", ok: latSets >= 120},
+    {name:"Scale mover", desc:"Weekly weight 4% below your first check-in", plate:"blue", ok: weights.length>1 && weights[weights.length-1] <= weights[0]*0.96},
     {name:"Taper", desc:"Waist 5 cm smaller than your first check-in", plate:"green", ok: waists.length>1 && waists[waists.length-1] <= waists[0]-5},
-    {name:"Finisher", desc:"All 52 sessions done", plate:"yellow", ok: sessionsDone >= 52}
+    {name:"Finisher", desc:"All 64 sessions done", plate:"yellow", ok: sessionsDone >= 64}
   ];
   let level = 0; THR.forEach((t,i)=>{ if (xp >= t) level = i; });
-  return {xp, level, prs, prCount, weeks, fullWeeks, bestStreak, badges, latSets};
+  return {xp, level, prs, prCount, weeks, fullWeeks, bestStreak, badges, latSets, ton};
 }
 
 /* ---------- Rendering ---------- */
@@ -708,29 +729,29 @@ function barbellSVG(load){
   }
   return s + '</svg>';
 }
-// Last logged set for this exercise, preferring the same week type (deload looks at Medium).
+// Last logged set for this exercise, preferring non-deload weeks (a deload keeps the same weights).
 function prevSet(w, S, E, i){
-  const want = WTYPE[w] === "D" ? "M" : WTYPE[w];
   let any = null;
   for (let p=w-1; p>=1; p--){
     const arr = state.weeks[p].s[S.id].sets[E.key], st = arr && arr[i];
-    if (st && st.r > 0){ if (WTYPE[p] === want) return st; if (!any) any = st; }
+    if (st && st.r > 0){ if (WTYPE[p] !== "D") return st; if (!any) any = st; }
   }
   return any;
 }
 function round25(x){ return Math.round(x / 2.5) * 2.5; }
-// Double progression: every set at the top of the range last time in this week type → add load.
+// Double progression: every set at the top of the range last time (deloads skipped) → add load.
 function upHint(w, S, E){
-  const t = WTYPE[w]; if (t === "D") return "";
+  if (WTYPE[w] === "D") return "";
   for (let p=w-1; p>=1; p--){
-    if (WTYPE[p] !== t) continue;
+    if (WTYPE[p] === "D") continue;
     const arr = state.weeks[p].s[S.id].sets[E.key]; if (!arr) continue;
     const logged = arr.filter(st=>st && st.r > 0);
     if (!logged.length) continue;
-    if (logged.length < arr.length || !logged.every(st=>st.r >= TYPES[t].top)) return "";
+    if (logged.length < arr.length || !logged.every(st=>st.r >= E.top)) return "";
+    if (E.bw) return "↑ All sets hit " + E.top + " last time: add a little weight or use less assistance";
     const kg = Math.max.apply(null, logged.map(st=>st.kg || 0));
-    if (kg > 0) return "↑ All sets hit " + TYPES[t].top + " last " + TYPES[t].name + " week: go " + (kg + (E.legs ? 5 : 2.5)) + " kg";
-    return "↑ All sets hit " + TYPES[t].top + " last " + TYPES[t].name + " week: make it harder";
+    if (kg > 0) return "↑ All sets hit " + E.top + " last time: go " + (Math.round((kg + E.inc) * 10) / 10) + " kg";
+    return "↑ All sets hit " + E.top + " last time: make it harder";
   }
   return "";
 }
@@ -742,26 +763,29 @@ const panel = document.getElementById("panel");
 function renderWeek(){
   const w = ui.week, m = meta(w), wk = state.weeks[w];
   const firstOpen = SESSIONS.find(S=>!wk.s[S.id].done);
+  const eff = m.t === "C" ? "Calibration: every set at RIR 3, reps and rest as listed." : (m.deload ? "Deload: about half the sets, same weights, RIR 3+." : "Sets, reps, RIR and rest as listed per exercise.");
   let h = '<div class="weekhead"><h2>Week '+w+'</h2><p class="phase">'+m.phase+' <span class="dates">'+weekRange(w)+'</span></p><p class="weekxp" id="weekxp"></p>';
   h += '<div class="wknav"><button type="button" class="navbtn" data-nav="-1" aria-label="Previous week"'+(w===1?' disabled':'')+'>‹</button><button type="button" class="navbtn" data-nav="1" aria-label="Next week"'+(w===NW?' disabled':'')+'>›</button></div>';
-  h += '<p class="targets">'+m.T.reps+' reps · compounds '+m.T.comp+', isolation '+(m.T.iso.indexOf("RIR")===0 ? m.T.iso : m.T.iso.charAt(0).toLowerCase()+m.T.iso.slice(1))+(m.deload?' · 2 sets each':'')+'.<br>Steps '+m.steps.toLocaleString("en-US")+' a day · '+m.kcal.toLocaleString("en-US")+' kcal, 175 g protein · Zone 2 walks '+andList(m.cardio.map(c=>LONGDAY[c.day]))+', '+m.cardio[0].min+' min.</p></div>';
+  h += '<p class="targets">'+eff+'<br>Steps '+m.steps.toLocaleString("en-US")+' a day · '+m.kcal.toLocaleString("en-US")+' kcal, '+PROTEIN+' g protein · Zone 2 walks '+andList(m.cardio.map(c=>LONGDAY[c.day]))+', '+m.cardio[0].min+' min.</p>';
+  h += '<p class="weekton" id="weekton"></p></div>';
   if (m.note) h += '<p class="note">'+m.note+'</p>';
 
   SESSIONS.forEach(S=>{
     const open = firstOpen && firstOpen.id === S.id ? " open" : "";
     const day = sessionDay(w,S);
     h += '<details class="session" style="--plate:var(--'+S.plate+')"'+open+'><summary><span class="sname">'+S.name+'</span><span class="sday">'+day+' '+fmtD(dayDate(w,day))+'</span><span class="sfocus">'+S.focus+'</span><span class="sstatus" id="st-'+S.id+'"></span></summary>';
-    h += '<p class="warm"><b>Warm-up:</b> 5 min treadmill, chin tucks 5 × 5 s, band pull-aparts 2 × 15, then 2–3 ramp-up sets of the first lift. <b>Rest:</b> 2–3 min on compounds, 60–90 s on isolation.</p>';
-    h += '<div class="scroll"><table class="log"><thead><tr><th>Exercise</th><th>Target</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Set 4</th></tr></thead><tbody>';
+    h += '<p class="warm"><b>Warm-up:</b> 5 min treadmill, chin tucks 5 × 5 s, band pull-aparts 2 × 15, then 2–3 ramp-up sets of the first lift (~50% × 10, ~70% × 5, ~85% × 2). <b>Tempo:</b> 2–3 s on the way down.</p>';
+    h += '<div class="scroll"><table class="log"><thead><tr><th>Exercise</th><th>Target</th>';
+    for (let i=0;i<MAXSETS;i++) h += '<th>Set '+(i+1)+'</th>';
+    h += '</tr></thead><tbody>';
     plan(w,S).forEach(E=>{
       const up = upHint(w,S,E);
       h += '<tr><th scope="row">'+esc(E.n)+(E.opt?'<span class="opt">optional</span>':'')+'<span class="pr" id="pr-'+S.id+'-'+E.key+'" hidden>PR</span>'+(E.ru?'<span class="ru">'+esc(E.ru)+'</span>':'')+(E.tip?'<span class="tip">'+esc(E.tip)+'</span>':'')+(up?'<span class="up">'+esc(up)+'</span>':'')+'</th>';
-      h += '<td class="target">'+E.sets+' × '+E.reps+'<span class="tip">'+E.effort+' · rest '+E.rest+'</span></td>';
-      for (let i=0;i<4;i++){
+      h += '<td class="target">'+E.sets+' × '+E.reps+(E.mode==="uni"?' / arm':'')+'<span class="tip">'+E.effort+' · rest '+E.rest+'</span><span class="tn" id="tn-'+S.id+'-'+E.key+'"></span></td>';
+      for (let i=0;i<MAXSETS;i++){
         if (i >= E.sets){ h += '<td class="empty"></td>'; continue; }
         const prev = prevSet(w, S, E, i);
-        let pk = prev ? prev.kg : null;
-        if (prev && m.deload && pk > 0) pk = round25(pk * 0.9);
+        const pk = prev ? prev.kg : null;
         const base = 'data-k="set" data-s="'+S.id+'" data-x="'+E.key+'" data-i="'+i+'"';
         h += '<td class="set" data-label="'+(i+1)+'"><span class="pair"><input type="number" inputmode="decimal" step="0.5" '+base+' data-f="kg" placeholder="'+(prev && pk !== null ? pk : "kg")+'" aria-label="'+esc(E.n)+' set '+(i+1)+' kg">×<input type="number" inputmode="numeric" min="0" '+base+' data-f="r" placeholder="'+(prev?prev.r:"reps")+'" aria-label="'+esc(E.n)+' set '+(i+1)+' reps"></span></td>';
       }
@@ -769,7 +793,8 @@ function renderWeek(){
     });
     h += '</tbody></table></div><div class="sfoot"><button type="button" class="donebtn" data-k="done" data-s="'+S.id+'" aria-pressed="false"></button>';
     h += '<label class="walk"><input type="checkbox" data-k="walk" data-s="'+S.id+'"> 10-min incline walk after (+10 XP)</label>';
-    h += '<span class="hint">Grey numbers are your last set from the same week type. Beat one to score a PR.</span></div></details>';
+    h += '<span class="ston" id="ston-'+S.id+'"></span>';
+    h += '<span class="hint">Grey numbers are your last set (deloads keep the same weights). Beat one to score a PR.</span></div></details>';
   });
 
   h += '<div class="block"><h3>Cardio</h3><table class="ctable"><thead><tr><th>Session</th><th>Done</th><th>Minutes</th><th>Avg HR</th></tr></thead><tbody>';
@@ -793,7 +818,7 @@ function renderWeek(){
   h += '<label>Average weight (kg)<input class="wide" type="number" inputmode="decimal" step="0.1" data-k="weight" placeholder="kg"></label>';
   h += '<label>Waist at navel (cm)<input class="wide" type="number" inputmode="decimal" step="0.5" data-k="waist" placeholder="cm"></label>';
   h += '<label class="notes">Notes (sleep, energy, neck pain 0–10, hunger)<textarea data-k="notes" maxlength="2000"></textarea></label>';
-  h += '</div><p class="hint">Weigh every morning after the toilet, before food, and enter the week\'s average.</p></div>';
+  h += '</div><p class="hint">Weigh every morning after the toilet, before food, and enter the week\'s average. It also sets the bodyweight used for pull-up tonnage. Take front, side and back photos every 2 weeks in the same light.</p></div>';
 
   panel.innerHTML = h;
   fillValues();
@@ -816,9 +841,15 @@ function fillValues(){
 }
 
 let last = null;
+// Most recent earlier week with tonnage logged for this session (or the whole week when sid is null).
+function prevTon(R, w, sid){
+  for (let p=w-1; p>=1; p--){ const t = sid ? R.ton[p].s[sid] : R.ton[p]; if (t && t.v > 0) return {p, t}; }
+  return null;
+}
+function tonLine(t){ return fmtT(t.v) + " · " + t.n.toLocaleString("en-US") + " reps · avg " + (t.n ? (t.v/t.n).toFixed(1) : "0") + " kg/rep"; }
 function renderStats(silent){
   const R = compute();
-  const w = ui.week, m = meta(w), wk = state.weeks[w], W = R.weeks[w];
+  const w = ui.week, m = meta(w), wk = state.weeks[w], W = R.weeks[w], TW = R.ton[w];
 
   // Hero
   document.getElementById("barbell").innerHTML = barbellSVG(LOADS[R.level]);
@@ -829,10 +860,12 @@ function renderStats(silent){
   const track = document.getElementById("xptrack"); track.setAttribute("aria-valuenow", pct); track.setAttribute("aria-valuemin","0"); track.setAttribute("aria-valuemax","100");
   document.getElementById("xptext").textContent = R.xp.toLocaleString("en-US") + " XP. " + (isMax ? "Top level reached." : (THR[R.level+1] - R.xp).toLocaleString("en-US") + " XP to " + LOADS[R.level+1] + " kg.");
   const earned = R.badges.filter(b=>b.ok).length;
+  let bestWeek = 0; for (let i=1; i<=NW; i++) if (R.ton[i].v > bestWeek) bestWeek = R.ton[i].v;
   document.getElementById("stats").innerHTML =
     '<div><dt>Full weeks</dt><dd>'+R.fullWeeks+'/'+NW+'</dd></div>'+
     '<div><dt>Best streak</dt><dd>'+R.bestStreak+'</dd></div>'+
     '<div><dt>PRs</dt><dd>'+R.prCount+'</dd></div>'+
+    '<div><dt>Best week</dt><dd>'+(bestWeek ? fmtT(bestWeek) : "–")+'</dd></div>'+
     '<div><dt>Badges</dt><dd>'+earned+'/'+R.badges.length+'</dd></div>';
 
   // Chips
@@ -842,30 +875,49 @@ function renderStats(silent){
     const wi = state.weeks[i], mi = meta(i);
     const segs = SESSIONS.map(S=>'<i style="'+(wi.s[S.id].done?'background:var(--'+S.plate+')':'')+'"></i>').join("");
     const cls = "chip" + (mi.deload ? " deload" : "") + (R.weeks[i].perfect ? " perfect" : "") + (i===tw ? " today" : "");
-    ch += '<button type="button" class="'+cls+'" data-week="'+i+'" aria-current="'+(i===w)+'" aria-label="Week '+i+', '+mi.T.name+(i===tw?", this week":"")+'">'+i+'<small>'+(mi.deload?"DL":mi.T.name.charAt(0))+'</small><span class="segs">'+segs+'</span></button>';
+    ch += '<button type="button" class="'+cls+'" data-week="'+i+'" aria-current="'+(i===w)+'" aria-label="Week '+i+', '+mi.T.name+(i===tw?", this week":"")+'">'+i+'<small>'+mi.T.short+'</small><span class="segs">'+segs+'</span></button>';
   }
   document.getElementById("weeks").innerHTML = ch;
 
   // Week panel bits
   const wx = document.getElementById("weekxp");
   if (wx) wx.textContent = W.xp + " XP this week" + (W.perfect ? ", perfect week" : "");
+  const wt = document.getElementById("weekton");
+  if (wt){
+    if (TW.v > 0){
+      let s = "Tonnage this week: " + tonLine(TW);
+      const pw = prevTon(R, w, null);
+      if (pw) s += " · " + fmtDelta(TW.v - pw.t.v) + " week " + pw.p;
+      wt.textContent = s;
+    } else wt.textContent = "Tonnage this week: log a set to start counting.";
+  }
   SESSIONS.forEach(S=>{
-    const ss = wk.s[S.id];
+    const ss = wk.s[S.id], TS = TW.s[S.id];
     let logged = 0, total = 0;
     plan(w,S).forEach(E=>{ if (!E.opt) total += E.sets; ss.sets[E.key].forEach(st=>{ if (st.r > 0 && !E.opt) logged++; }); });
     const st = document.getElementById("st-"+S.id);
-    if (st){ st.textContent = ss.done ? "Done" + (ss.date ? ", " + ss.date : "") : logged + " / " + total + " sets logged"; st.classList.toggle("done", ss.done); }
+    if (st){ st.textContent = (ss.done ? "Done" + (ss.date ? ", " + ss.date : "") : logged + " / " + total + " sets logged") + (TS.v > 0 ? " · " + fmtT(TS.v) : ""); st.classList.toggle("done", ss.done); }
     const btn = panel.querySelector('.donebtn[data-s="'+S.id+'"]');
     if (btn){ btn.setAttribute("aria-pressed", String(ss.done)); btn.textContent = ss.done ? "Session done (+100 XP)" : "Mark session done"; }
-    plan(w,S).forEach(E=>{ const p = document.getElementById("pr-"+S.id+"-"+E.key); if (p) p.hidden = !R.prs[w][E.k]; });
+    const so = document.getElementById("ston-"+S.id);
+    if (so){
+      let s = TS.v > 0 ? "Tonnage " + tonLine(TS) : "";
+      const ps = prevTon(R, w, S.id);
+      if (ps) s += (s ? " · " + fmtDelta(TS.v - ps.t.v) + " week " + ps.p : "Last time (week " + ps.p + "): " + fmtT(ps.t.v));
+      so.textContent = s;
+    }
+    plan(w,S).forEach(E=>{
+      const p = document.getElementById("pr-"+S.id+"-"+E.key); if (p) p.hidden = !R.prs[w][E.k];
+      const tn = document.getElementById("tn-"+S.id+"-"+E.key); if (tn){ const te = TW.e[E.k]; tn.textContent = te && te.v > 0 ? "Volume " + fmtKg(te.v) : ""; }
+    });
   });
   panel.querySelectorAll('[data-k="steps"]').forEach(el=>{ const v = n(el.value); el.classList.toggle("hit", v !== null && v >= m.steps); });
 
   // Overview
-  let ov = '<thead><tr><th>Week</th><th>Dates</th><th>Phase</th><th>Strength</th><th>Cardio</th><th>Avg steps</th><th>Neck days</th><th>Weight</th><th>Waist</th><th>XP</th></tr></thead><tbody>';
+  let ov = '<thead><tr><th>Week</th><th>Dates</th><th>Phase</th><th>Strength</th><th>Tonnage</th><th>Avg kg/rep</th><th>Cardio</th><th>Avg steps</th><th>Neck days</th><th>Weight</th><th>Waist</th><th>XP</th></tr></thead><tbody>';
   for (let i=1; i<=NW; i++){
-    const r = R.weeks[i], wi = state.weeks[i];
-    ov += '<tr class="'+(i===w?"current":"")+'"><td><button type="button" class="linkbtn" data-week="'+i+'">Week '+i+'</button></td><td>'+weekRange(i)+'</td><td>'+meta(i).phase+'</td><td>'+r.sdone+'/4</td><td>'+r.cdone+'/'+r.creq+'</td><td>'+(r.stepAvg ? r.stepAvg.toLocaleString("en-US") : "–")+'</td><td>'+r.neck+'/7</td><td>'+(wi.weight ? wi.weight+" kg" : "–")+'</td><td>'+(wi.waist ? wi.waist+" cm" : "–")+'</td><td>'+r.xp+(r.perfect?" ★":"")+'</td></tr>';
+    const r = R.weeks[i], wi = state.weeks[i], t = R.ton[i];
+    ov += '<tr class="'+(i===w?"current":"")+'"><td><button type="button" class="linkbtn" data-week="'+i+'">Week '+i+'</button></td><td>'+weekRange(i)+'</td><td>'+meta(i).phase+'</td><td>'+r.sdone+'/4</td><td>'+(t.v ? fmtT(t.v) : "–")+'</td><td>'+(t.n ? (t.v/t.n).toFixed(1) : "–")+'</td><td>'+r.cdone+'/'+r.creq+'</td><td>'+(r.stepAvg ? r.stepAvg.toLocaleString("en-US") : "–")+'</td><td>'+r.neck+'/7</td><td>'+(wi.weight ? wi.weight+" kg" : "–")+'</td><td>'+(wi.waist ? wi.waist+" cm" : "–")+'</td><td>'+r.xp+(r.perfect?" ★":"")+'</td></tr>';
   }
   document.getElementById("overview").innerHTML = ov + '</tbody>';
 
@@ -940,7 +992,7 @@ const importFile = document.getElementById("importFile"), importApply = document
 let pendingImport = null;
 document.getElementById("exportBtn").addEventListener("click", async ()=>{
   const weeks = {}; for (let w=1; w<=NW; w++) weeks[w] = state.weeks[w];
-  const json = JSON.stringify({app:"13-weeks-push-pull",version:1,exportedAt:new Date().toISOString(),weeks,updated:state.updated}, null, 2);
+  const json = JSON.stringify({app:"16-weeks-back-delts",version:1,exportedAt:new Date().toISOString(),weeks,updated:state.updated}, null, 2);
   const fname = "training-log-" + new Date().toISOString().slice(0,10) + ".json";
   const C = window.claude;
   if (C && typeof C.use === "function"){
@@ -965,7 +1017,7 @@ importFile.addEventListener("change", async ()=>{
   try {
     const data = JSON.parse(await f.text());
     const src = data && data.weeks;
-    if (data && data.app === "12-weeks-on-the-bar") throw new Error("old");
+    if (data && (data.app === "12-weeks-on-the-bar" || data.app === "13-weeks-push-pull")) throw new Error("old");
     if (!src || typeof src !== "object") throw new Error("shape");
     const weeks = [null]; let filled = 0;
     for (let w=1; w<=NW; w++){ weeks[w] = normalize(src[w], w); if (hasData(weeks[w], w)) filled++; }
@@ -973,7 +1025,7 @@ importFile.addEventListener("change", async ()=>{
     importMsg.textContent = filled + " week" + (filled===1 ? "" : "s") + " with entries in " + f.name + ".";
     importApply.hidden = false;
   } catch(e){
-    importMsg.textContent = e && e.message === "old" ? "That backup is from the old Upper/Lower log, which doesn't fit the Push/Pull program." : "That file isn't a backup from this log. Choose a .json file made with Export backup.";
+    importMsg.textContent = e && e.message === "old" ? "That backup is from an older program log (Upper/Lower or Push/Pull), which doesn't fit this program. Open it in the Push/Pull log page instead." : "That file isn't a backup from this log. Choose a .json file made with Export backup.";
   }
   importFile.value = "";
 });
@@ -992,8 +1044,8 @@ importApply.addEventListener("click", ()=>{
 });
 
 /* ---------- GitHub sync (GitHub Pages version) ---------- */
-// Same GitHub connection as before; the Push/Pull log gets its own file so the old Upper/Lower log.json stays untouched.
-const GH_KEY = "pp-12wk-gh-v1", GH_FILE = "log-push-pull.json";
+// Same GitHub connection as before; this program gets its own file so log.json and log-push-pull.json stay untouched.
+const GH_KEY = "pp-12wk-gh-v1", GH_FILE = "log-back-delts.json";
 let gh = null;
 if (STANDALONE){ try { const g = JSON.parse(localStorage.getItem(GH_KEY) || "null"); if (g && g.owner && g.repo && g.token) gh = g; } catch(e) {} }
 let ghSha = null, ghTimer = null, ghChain = Promise.resolve(), ghLast = null;
@@ -1039,8 +1091,8 @@ async function ghPull(){
 async function ghPush(retried){
   const weeks = {}; for (let w=1; w<=NW; w++) weeks[w] = state.weeks[w];
   const body = {
-    message: "Push/Pull log update " + new Date().toISOString().slice(0,16).replace("T"," "),
-    content: b64enc(JSON.stringify({app:"13-weeks-push-pull", version:1, weeks, updated:state.updated}))
+    message: "Back + Delts / Chest + Legs log update " + new Date().toISOString().slice(0,16).replace("T"," "),
+    content: b64enc(JSON.stringify({app:"16-weeks-back-delts", version:1, weeks, updated:state.updated}))
   };
   if (ghSha) body.sha = ghSha;
   const r = await ghFetch("/contents/" + GH_FILE, {method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
@@ -1182,19 +1234,22 @@ function buildXlsx(sheets){
 function historySheets(){
   const R = compute();
   const r1 = v => v === null || v === undefined ? "" : v;
-  const sets = [["Week","Phase","Week type","Session","Date done","Exercise","Set","kg","Reps","Est. 1RM (kg)","PR this week"]];
-  const progress = [["Session","Exercise"].concat(Array.from({length:NW},(_,i)=>"W"+(i+1)+" "+(WTYPE[i+1]==="D"?"DL":WTYPE[i+1])))];
+  const sets = [["Week","Phase","Week type","Session","Date done","Exercise","Set","kg","Reps","Est. 1RM (kg)","Volume (kg)","PR this week"]];
+  const progress = [["Session","Exercise"].concat(Array.from({length:NW},(_,i)=>"W"+(i+1)+" "+TYPES[WTYPE[i+1]].short))];
+  const tonS = [["Week","Phase","Session","Date done","Tonnage (kg)","Reps","Avg kg/rep"]];
   const bestBy = {}, order = [];
   for (let w=1; w<=NW; w++){
-    const m = meta(w);
+    const m = meta(w), bw = bwFor(w);
     SESSIONS.forEach(S=>{
-      const ss = state.weeks[w].s[S.id];
+      const ss = state.weeks[w].s[S.id], TS = R.ton[w].s[S.id];
+      if (TS.v > 0) tonS.push([w, m.phase, S.name, ss.date || "", Math.round(TS.v), TS.n, Math.round(TS.v/TS.n*10)/10]);
       plan(w,S).forEach(E=>{
         if (!bestBy[E.k]){ bestBy[E.k] = {}; order.push([S, E]); }
         (ss.sets[E.key] || []).forEach((st,i)=>{
           if (!(st && st.r > 0)) return;
           const e1 = st.kg > 0 ? Math.round(st.kg * (1 + st.r/30) * 10) / 10 : "";
-          sets.push([w, m.phase, m.T.name, S.name, ss.date || "", E.n, i+1, r1(st.kg), st.r, e1, R.prs[w][E.k] ? "PR" : ""]);
+          const tt = setTon(E, st, bw);
+          sets.push([w, m.phase, m.T.name, S.name, ss.date || "", E.n, i+1, r1(st.kg), st.r, e1, tt ? Math.round(tt.v) : "", R.prs[w][E.k] ? "PR" : ""]);
           if (e1 !== "" && !(bestBy[E.k][w] >= e1)) bestBy[E.k][w] = e1;
         });
       });
@@ -1206,7 +1261,7 @@ function historySheets(){
   });
   const cardio = [["Week","Day","Target (min)","Done","Minutes","Avg HR"]];
   const daily = [["Week","Date","Day","Steps","Step target","Target hit","Neck routine"]];
-  const weekly = [["Week","Dates","Phase","Strength sessions","After-gym walks","Cardio done","Cardio planned","Avg steps","Neck days","Kcal target","Weight (kg)","Waist (cm)","XP","Perfect week","Notes"]];
+  const weekly = [["Week","Dates","Phase","Strength sessions","Tonnage (t)","Reps","Avg kg/rep","After-gym walks","Cardio done","Cardio planned","Avg steps","Neck days","Kcal target","Weight (kg)","Waist (cm)","XP","Perfect week","Notes"]];
   for (let w=1; w<=NW; w++){
     const wk = state.weeks[w], m = meta(w), W = R.weeks[w];
     if (hasData(wk, w)){
@@ -1217,12 +1272,14 @@ function historySheets(){
       DAYS.forEach((d,i)=>daily.push([w, fmtD(dayDate(w,d)), d, r1(wk.steps[i]), m.steps, wk.steps[i] >= m.steps ? "Yes" : "No", wk.neck[i] ? "Yes" : "No"]));
     }
     const walks = SESSIONS.filter(S=>wk.s[S.id].walk).length;
-    weekly.push([w, weekRange(w), m.phase, W.sdone, walks, W.cdone, W.creq, r1(W.stepAvg), W.neck, m.kcal, r1(wk.weight), r1(wk.waist), W.xp, W.perfect ? "Yes" : "No", wk.notes || ""]);
+    const TW = R.ton[w];
+    weekly.push([w, weekRange(w), m.phase, W.sdone, TW.v ? Math.round(TW.v/100)/10 : "", TW.n || "", TW.n ? Math.round(TW.v/TW.n*10)/10 : "", walks, W.cdone, W.creq, r1(W.stepAvg), W.neck, m.kcal, r1(wk.weight), r1(wk.waist), W.xp, W.perfect ? "Yes" : "No", wk.notes || ""]);
   }
   return [
-    {name:"Weekly summary", rows:weekly, widths:[7,17,20,16,14,12,14,11,10,11,12,11,8,12,50]},
+    {name:"Weekly summary", rows:weekly, widths:[7,17,20,16,12,8,11,14,12,14,11,10,11,12,11,8,12,50]},
+    {name:"Tonnage by session", rows:tonS, widths:[7,20,16,11,13,8,11]},
     {name:"Strength progress", rows:progress, widths:[9,42].concat(Array(NW).fill(8))},
-    {name:"Sets", rows:sets, widths:[7,20,11,9,11,42,5,7,7,13,12]},
+    {name:"Sets", rows:sets, widths:[7,20,11,15,11,42,5,7,7,13,12,12]},
     {name:"Cardio", rows:cardio, widths:[7,6,12,7,9,8]},
     {name:"Daily habits", rows:daily, widths:[7,9,6,9,11,11,13]}
   ];
@@ -1248,7 +1305,7 @@ document.getElementById("historyBtn").addEventListener("click", async ()=>{
   } catch(e){
     if (e && e.code === "declined") return;
     if (e && (e.code === "extension_not_enabled" || e.code === "rejected_extension")){
-      try { await offerFile("training-sets-" + day + ".csv", new Blob(["\ufeff" + csvOf(sheets[2].rows)], {type:"text/csv"})); toast("Excel isn't available here, so you got the sets as CSV"); }
+      try { await offerFile("training-sets-" + day + ".csv", new Blob(["\ufeff" + csvOf(sheets.find(x=>x.name==="Sets").rows)], {type:"text/csv"})); toast("Excel isn't available here, so you got the sets as CSV"); }
       catch(e2){ if (!e2 || e2.code !== "declined") toast("Couldn't download here"); }
       return;
     }
