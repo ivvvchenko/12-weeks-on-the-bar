@@ -386,12 +386,12 @@ const EX = {
   csrow:      {n:"Chest-supported row (T-bar or machine)", ru:"Тяга с упором грудью", c:1, tip:"Pull to the lower ribs, squeeze the shoulder blades."},
   latwide:    {n:"Wide-grip lat pulldown", ru:"Тяга верхнего блока широким хватом", tip:"Drive the elbows down to your sides, slight lean back."},
   dbpress:    {n:"Seated DB shoulder press", ru:"Жим гантелей сидя", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Back supported. On the machine, enter half the stack."},
-  cablelat:   {n:"Cable lateral raise, one arm", ru:"Отведение в сторону в кроссовере", lat:1, mode:"uni", tip:"kg and reps per arm. Cable behind the body, lead with the elbow, no swinging."},
+  dblat:      {n:"DB lateral raise", ru:"Махи гантелями в стороны", lat:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Lead with the elbow, slight forward lean, no swinging."},
   revpec:     {n:"Reverse pec deck", ru:"Обратная бабочка", tip:"Rear delts: they make the shoulder look round from the side."},
   inclcurl:   {n:"Incline DB curl", ru:"Сгибания на наклонной скамье", mode:"pair", inc:2, tip:"kg = one dumbbell. Arms hang behind the body for a full stretch."},
   incdb:      {n:"Incline DB press, 30°", ru:"Жим гантелей на наклонной", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Main upper-chest lift: elbows ~45°, deep stretch at the bottom."},
-  chestpress: {n:"Machine or flat DB press", ru:"Жим в тренажёре / гантелей лёжа", tip:"Machine: the stack. Dumbbells: both added together. Mid chest, controlled tempo."},
-  lhfly:      {n:"Low-to-high cable fly", ru:"Сведение в кроссовере снизу вверх", mode:"pair", tip:"kg = one side. Hands finish at chin height: upper chest."},
+  bench:      {n:"Bench press", ru:"Жим штанги лёжа", c:1, tip:"kg = total on the bar. Medium grip, shoulder blades pinned, controlled tempo."},
+  incdbfly:   {n:"Incline DB fly", ru:"Разводка гантелей на наклонной", mode:"pair", inc:2, tip:"kg = one dumbbell. Deep stretch, slow lowering: upper chest."},
   hack:       {n:"Hack squat (or leg press, feet mid-low)", ru:"Гакк-приседания", c:1, legs:1, tip:"Full depth you can control, 2–3 s down."},
   seatcurl:   {n:"Seated leg curl", ru:"Сгибание ног сидя", legs:1, tip:"Lean forward a little for a bigger stretch."},
   ohcable:    {n:"Overhead cable triceps extension", ru:"Разгибание из-за головы в блоке", tip:"Long head, the biggest part of the triceps."},
@@ -403,8 +403,8 @@ const EX = {
   facepull:   {n:"Face pull or rear-delt cable fly", ru:"Тяга к лицу", tip:"Rear delts and shoulder health."},
   ezcurl:     {n:"EZ-bar curl", ru:"Сгибание со штангой EZ", tip:"Elbows still, no swinging."},
   hammer:     {n:"Hammer curl", ru:"Молотки", mode:"pair", inc:2, tip:"kg = one dumbbell."},
-  incsmith:   {n:"Incline Smith or machine press, 15–30°", ru:"Жим в Смите на наклонной", c:1, tip:"Second upper-chest hit of the week. kg = total on the bar."},
-  inclfly:    {n:"Incline DB fly or pec deck", ru:"Разводка на наклонной / бабочка", tip:"Pec deck: the stack. Dumbbells: both added together. Deep stretch, slow lowering."},
+  incbench:   {n:"Incline bench press, 30°", ru:"Жим штанги на наклонной скамье", c:1, tip:"kg = total on the bar. Second upper-chest hit of the week."},
+  pecdeck:    {n:"Pec deck", ru:"Бабочка", tip:"Squeeze 1 s at the front, slow return."},
   legpress:   {n:"Leg press, feet high and wide", ru:"Жим ногами", c:1, legs:1, tip:"Shifts the work to glutes and hamstrings."},
   lyingcurl:  {n:"Lying leg curl", ru:"Сгибание ног лёжа", legs:1, tip:"Hips pressed into the pad."},
   pushdown:   {n:"Rope triceps pushdown", ru:"Разгибание с канатом", tip:"Spread the rope at the bottom."},
@@ -415,15 +415,15 @@ const EX = {
 const SESSIONS = [
   {id:"BDA",name:"Back + Delts A",day:"Mon",day1:"Sat",focus:"Lat width, side and rear delts, biceps",plate:"red",ex:[
     ["pullup",3,"6–10","RIR 1–2","2–3 min"],["csrow",3,"8–12","RIR 1–2","2 min"],["latwide",3,"10–12","RIR 1–2","90 s"],
-    ["dbpress",2,"8–10","RIR 1–2","2 min"],["cablelat",5,"12–15","RIR 0–1","60 s"],["revpec",3,"15–20","RIR 0–1","60 s"],["inclcurl",3,"10–12","RIR 0–1","60 s"]]},
+    ["dbpress",3,"8–10","RIR 1–2","2 min"],["dblat",4,"12–15","RIR 0–1","60 s"],["revpec",3,"15–20","RIR 0–1","60 s"],["inclcurl",3,"10–12","RIR 0–1","60 s"]]},
   {id:"CLA",name:"Chest + Legs A",day:"Tue",day1:"Mon",focus:"Upper chest, quads, triceps",plate:"blue",ex:[
-    ["incdb",3,"6–10","RIR 1–2","2–3 min"],["chestpress",2,"8–12","RIR 1","2 min"],["lhfly",2,"12–15","RIR 0–1","60 s"],
+    ["incdb",4,"6–10","RIR 1–2","2–3 min"],["bench",3,"8–12","RIR 1","2 min"],["incdbfly",3,"12–15","RIR 0–1","60 s"],
     ["hack",3,"8–12","RIR 1–2","2–3 min"],["seatcurl",3,"10–12","RIR 1","90 s"],["ohcable",3,"10–15","RIR 0–1","60 s"],["cablecrunch",2,"12–15","RIR 1","60 s"]]},
   {id:"BDB",name:"Back + Delts B",day:"Thu",day1:"Thu",focus:"Back thickness, side and rear delts, biceps",plate:"yellow",ex:[
     ["latneutral",3,"8–12","RIR 1–2","2 min"],["cablerow1",3,"10–12","RIR 1–2","90 s"],["widerow",3,"10–12","RIR 1–2","90 s"],
     ["leanlat",5,"12–20","RIR 0–1","60 s"],["facepull",3,"15–20","RIR 0–1","60 s"],["ezcurl",3,"8–12","RIR 0–1","60 s"],["hammer",2,"10–12","RIR 0–1","60 s"]]},
   {id:"CLB",name:"Chest + Legs B",day:"Fri",day1:"Fri",focus:"Upper chest, hamstrings and glutes, triceps",plate:"green",ex:[
-    ["incsmith",3,"8–10","RIR 1–2","2–3 min"],["inclfly",3,"12–15","RIR 0–1","60 s"],["legpress",3,"10–12","RIR 1–2","2 min"],
+    ["incbench",3,"8–10","RIR 1–2","2–3 min"],["pecdeck",3,"12–15","RIR 0–1","60 s"],["legpress",3,"10–12","RIR 1–2","2 min"],
     ["lyingcurl",3,"10–12","RIR 1","90 s"],["pushdown",3,"10–12","RIR 0–1","60 s"],["calf",3,"12–15","RIR 0–1","60 s"],["kneeraise",3,"10–15","RIR 1","60 s"]]}
 ];
 const MAXSETS = 5;
@@ -499,6 +499,8 @@ function blankWeek(w){
   cardioPlan(w).forEach(x=>{ c[x.id] = {done:false,min:null,hr:null}; });
   return {s,c,steps:[null,null,null,null,null,null,null],neck:[false,false,false,false,false,false,false],weight:null,waist:null,notes:""};
 }
+// Exercises renamed on 31 Oct: logged sets carry over to the new name.
+const RENAMED = {dblat:"cablelat", bench:"chestpress", incdbfly:"lhfly", incbench:"incsmith", pecdeck:"inclfly"};
 function n(v){ if (v===null || v===undefined || v==="") return null; const x = Number(v); return Number.isFinite(x) ? x : null; }
 function normalize(o, w){
   const b = blankWeek(w);
@@ -509,7 +511,8 @@ function normalize(o, w){
     b.s[S.id].walk = !!src.walk;
     b.s[S.id].date = typeof src.date === "string" ? src.date.slice(0,20) : "";
     plan(w,S).forEach(E=>{
-      const arr = src.sets && src.sets[E.key];
+      let arr = src.sets && src.sets[E.key];
+      if (!Array.isArray(arr) && src.sets && RENAMED[E.key]) arr = src.sets[RENAMED[E.key]];
       if (!Array.isArray(arr)) return;
       for (let j=0;j<E.sets;j++){ const st = arr[j]; if (st && typeof st === "object") b.s[S.id].sets[E.key][j] = {kg:n(st.kg), r:n(st.r)}; }
     });
