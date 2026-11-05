@@ -1,7 +1,7 @@
 {
-  "name": "16 weeks on the bar",
-  "short_name": "16 weeks",
-  "description": "16-week Back + Delts / Chest + Legs training log with tonnage, Zone 2 walks, steps, neck routine and XP.",
+  "name": "8 weeks on the bar",
+  "short_name": "8 weeks",
+  "description": "8-week Chest / Back / Legs training log (6 days a week) with tonnage, Zone 2 walks, steps, neck routine and XP.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

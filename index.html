@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>16 weeks on the bar</title>
+<title>8 weeks on the bar</title>
 <meta name="theme-color" content="#EEF1F4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1A2027" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="16 weeks">
+<meta name="apple-mobile-web-app-title" content="8 weeks">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@ button{font-family:inherit}
 .status{font-size:.85rem;color:var(--muted);margin-top:10px}
 
 /* Week chips */
-.weeks{display:grid;grid-template-columns:repeat(16,minmax(46px,1fr));gap:6px;margin:22px 0 4px;overflow-x:auto;padding:2px 2px 6px}
+.weeks{display:grid;grid-template-columns:repeat(8,minmax(56px,1fr));gap:6px;margin:22px 0 4px;overflow-x:auto;padding:2px 2px 6px}
 .chip{appearance:none;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 4px 8px;font:600 1.2rem/1 var(--display);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:46px}
 .chip.deload{border-style:dashed}
 .chip small{font:600 .68rem/1 var(--body);color:var(--muted);margin-top:-3px}
@@ -74,7 +74,7 @@ button{font-family:inherit}
 .chip[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 .chip.perfect{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .segs{display:flex;gap:2px}
-.segs i{display:block;width:7px;height:4px;border-radius:1px;background:var(--line)}
+.segs i{display:block;width:6px;height:4px;border-radius:1px;background:var(--line)}
 .legend{font-size:.82rem;color:var(--muted);margin:2px 0 0}
 
 /* Week head */
@@ -99,13 +99,14 @@ button{font-family:inherit}
 .sstatus.done{color:var(--green)}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%}
-.log{min-width:900px}
+.log{min-width:1020px}
 th,td{padding:6px 8px;border-top:1px solid var(--line);text-align:left;vertical-align:middle}
 thead th{font-size:.8rem;font-weight:600;color:var(--muted);border-top:none;white-space:nowrap}
 .log tbody th{font-weight:500;min-width:210px;white-space:normal}
 .log td{white-space:nowrap}
 .log td.set{padding:6px 4px}
 .log td.set input[type=number]{width:3.1em}
+.log td.optset input{border-style:dashed}
 .log tbody th{min-width:190px}
 .tip{display:block;font-size:.78rem;color:var(--muted);font-weight:400}
 .tn{display:block;font-size:.78rem;color:var(--ink);font-weight:600}
@@ -194,7 +195,7 @@ details.rules + details.rules{margin-top:12px}
   .barbell svg{max-width:340px}
   .level b{font-size:1.7rem}
   .stats{margin-top:10px}
-  .weeks{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:12px -12px 0;padding:8px 12px;grid-template-columns:repeat(16,48px);border-bottom:1px solid var(--line)}
+  .weeks{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:12px -12px 0;padding:8px 12px;grid-template-columns:repeat(8,56px);border-bottom:1px solid var(--line)}
   .legend{display:none}
   .weekhead h2{font-size:2.1rem}
   .weekxp{margin-left:0;width:100%;order:4;font-size:1.15rem}
@@ -213,6 +214,7 @@ details.rules + details.rules{margin-top:12px}
   .log tbody th,.log td{display:block;border:none;padding:0;min-width:0}
   .log tbody th{grid-column:1/-1;font-size:1.05rem}
   .log td.target{grid-column:1/-1;color:var(--muted);font-size:.9rem;margin-top:-6px}
+  .log td.target{white-space:normal}
   .warm{padding:0 12px 6px}
   .walk{width:100%}
   .log td.empty{display:none}
@@ -244,8 +246,8 @@ details.rules + details.rules{margin-top:12px}
 <div class="wrap">
   <header class="hero">
     <div>
-      <h1>16 weeks on the bar</h1>
-      <p class="lede">Back + Delts / Chest + Legs, four days a week, in two 8-week blocks with a deload in weeks 8 and 16. Tonnage is counted for every set. Plus Zone 2 walks, steps and the daily neck routine. Every session, step goal and PR loads more plates.</p>
+      <h1>8 weeks on the bar</h1>
+      <p class="lede">Chest, back and legs, each twice a week: six sessions from Thursday to Wednesday, Sunday off. Main lifts in a 15, 12, 3–4 × 6 pyramid, deload in week 8. Tonnage is counted for every set. Plus a Sunday Zone 2 walk, steps and the daily neck routine. Every session, step goal and PR loads more plates.</p>
       <dl class="stats" id="stats"></dl>
       <p class="status" id="status">Loading your log…</p>
     </div>
@@ -258,12 +260,12 @@ details.rules + details.rules{margin-top:12px}
   </header>
 
   <nav class="weeks" id="weeks" aria-label="Choose week"></nav>
-  <p class="legend">Cal = calibration week, B = build week, DL = deload. Bars under each week fill with the session colour when done. Solid weeks are perfect weeks, dashed ones are deloads, the underlined one is this week.</p>
+  <p class="legend">B = build week, DL = deload. Bars under each week fill with the session colour when done. Solid weeks are perfect weeks, the dashed one is the deload, the underlined one is this week.</p>
 
   <main id="panel"></main>
 
   <section class="lower">
-    <h2>16-week overview</h2>
+    <h2>8-week overview</h2>
     <div class="scroll"><table class="overview" id="overview"></table></div>
   </section>
 
@@ -275,15 +277,15 @@ details.rules + details.rules{margin-top:12px}
       <table>
         <thead><tr><th>Week type</th><th>What to do</th><th>Weeks</th></tr></thead>
         <tbody>
-          <tr><td>Calibration</td><td>Find working weights, every set at RIR 3</td><td>1</td></tr>
-          <tr><td>Build</td><td>Sets, reps, RIR and rest as listed per exercise</td><td>2–7, 9–15</td></tr>
-          <tr><td>Deload</td><td>Same weights, about half the sets, RIR 3+</td><td>8, 16</td></tr>
+          <tr><td>Build</td><td>Sets, reps, RIR and rest as listed per exercise (week 1: find your weights, work sets at RIR 2)</td><td>1–7</td></tr>
+          <tr><td>Deload</td><td>Same weights, about half the sets, RIR 3+</td><td>8</td></tr>
         </tbody>
       </table>
-      <p><b>Split:</b> Back + Delts A (Mon), Chest + Legs A (Tue), Back + Delts B (Thu), Chest + Legs B (Fri). Week 1 only: Back + Delts A on Sat 31 Oct and Chest + Legs A on Mon 2 Nov. Weeks run Saturday to Friday.</p>
-      <p><b>Progression:</b> double progression. Add reps first. When every set hits the top of the range, add weight next time: about 2 kg per dumbbell, 2.5 kg on cables and machines, 5–10 kg on leg machines. The app flags it with a green ↑ line. RIR = reps in reserve: RIR 1 means one more rep was possible.</p>
-      <p><b>Deload early</b> if your main lifts stall or drop two sessions in a row, joints ache, or sleep and motivation crash. In a calorie deficit, holding your strength is already a win.</p>
-      <p><b>Exercises:</b> the same every week. Only the deload changes the sets.</p>
+      <p><b>Split:</b> Thu Chest A, Fri Back A, Sat Legs A, Sun rest, Mon Chest B, Tue Back B, Wed Legs B. Weeks run Thursday to Wednesday.</p>
+      <p><b>Pyramids:</b> the first lift of each day goes 15, 12, then 3–4 work sets of 6 (bent-over row: of 8). The 15 and 12 are lighter ramp-up sets; set 6 is the optional 4th work set (dashed box). When you get all 4 work sets at the target reps, add weight next time.</p>
+      <p><b>Progression:</b> double progression on everything else. Add reps first. When every set hits the top of the range, add weight next time: about 2 kg per dumbbell, 2.5 kg on cables and machines, 5–10 kg on leg machines. The app flags it with a green ↑ line. RIR = reps in reserve: RIR 1 means one more rep was possible.</p>
+      <p><b>Neck-friendly changes:</b> leg press replaces back squats and the seated leg curl replaces Romanian deadlifts, so no bar sits on the neck and nothing heavy hangs from the shoulders. The one-arm cable lateral raise replaces the Smith upright row (impingement and upper-trap load). Keep the bent-over row neck-neutral and swap it for a chest-supported row if the neck complains.</p>
+      <p><b>Deload early</b> if your main lifts stall or drop two sessions in a row, joints ache, or sleep and motivation crash. Six days a week in a calorie deficit is demanding: holding your strength is already a win.</p>
       <p><b>Rest:</b> as listed per exercise. If a session runs past 75 min, shorten rest on isolation work first.</p>
       <p><b>Neck and posture routine</b> (daily, 8–10 min, morning):</p>
       <ol class="neck">
@@ -304,8 +306,8 @@ details.rules + details.rules{margin-top:12px}
           <tr><td>Barbell, Smith, machine, cable stack</td><td>kg × reps</td></tr>
           <tr><td>Dumbbells in both hands (kg = one dumbbell)</td><td>kg × 2 × reps</td></tr>
           <tr><td>One arm at a time (kg and reps per arm)</td><td>kg × reps × 2 arms</td></tr>
-          <tr><td>Pull-ups</td><td>(bodyweight + added kg, or minus assistance) × reps. Bodyweight = your latest weekly check-in, 104 kg until you log one</td></tr>
-          <tr><td>Hanging knee raise</td><td>Not counted</td></tr>
+          <tr><td>Pull-ups and dips</td><td>(bodyweight + added kg, or minus assistance) × reps. Bodyweight = your latest weekly check-in, 104 kg until you log one</td></tr>
+          <tr><td>Back extension</td><td>Plate × reps; bodyweight only is not counted</td></tr>
         </tbody>
       </table>
       <p>Use it as a trend against your own past weeks. The book aims for +0.5–1 t a week on average over 2–3 months; in a calorie deficit, holding steady is fine. Deload weeks drop on purpose. Machines like the leg press inflate tonnage, so don't compare your numbers with anyone else's.</p>
@@ -321,7 +323,7 @@ details.rules + details.rules{margin-top:12px}
           <tr><td>Day at or above step target</td><td>+10</td></tr>
           <tr><td>Neck routine done</td><td>+5 per day</td></tr>
           <tr><td>Weekly check-in (weight and waist)</td><td>+20</td></tr>
-          <tr><td>Perfect week (4 sessions and every planned walk)</td><td>+100</td></tr>
+          <tr><td>Perfect week (6 sessions and the Sunday walk)</td><td>+100</td></tr>
         </tbody>
       </table>
     </details>
@@ -345,7 +347,7 @@ details.rules + details.rules{margin-top:12px}
         <div class="syncrow"><button type="button" class="btn" id="ghSyncNow">Sync now</button><button type="button" class="btn" id="ghDisconnect">Disconnect this device</button></div>
       </div>
     </div>
-    <p class="hint">Download your full history for Excel or Google Sheets, or move your log with a backup file. Your previous Push/Pull log (5–30 Oct) is still saved: <a href="push-pull.html">open the Push/Pull log</a>.</p>
+    <p class="hint">Download your full history for Excel or Google Sheets, or move your log with a backup file. Your previous logs are still saved: <a href="back-delts.html">Back + Delts / Chest + Legs (31 Oct – 4 Nov)</a> and <a href="push-pull.html">Push/Pull (5–30 Oct)</a>.</p>
     <div class="backup">
       <button type="button" class="btn solid" id="historyBtn">Download history (Excel)</button>
       <button type="button" class="btn" id="exportBtn">Export backup</button>
@@ -362,88 +364,95 @@ details.rules + details.rules{margin-top:12px}
 (function(){
 "use strict";
 
-/* ---------- Program: Back + Delts / Chest + Legs (see the "Men's Physique Program" doc) ---------- */
-const NW = 16;
-const START = new Date(2026, 9, 31); // Saturday 31 Oct 2026 = first day of week 1
-const DAYS = ["Sat","Sun","Mon","Tue","Wed","Thu","Fri"]; // weeks run Saturday to Friday
+/* ---------- Program: Chest / Back / Legs, each twice a week (from 5 Nov 2026) ---------- */
+const NW = 8;
+const START = new Date(2026, 10, 5); // Thursday 5 Nov 2026 = first day of week 1
+const DAYS = ["Thu","Fri","Sat","Sun","Mon","Tue","Wed"]; // weeks run Thursday to Wednesday, Sunday off
 const TYPES = {
-  C:{name:"Calibration", short:"Cal"},
-  B:{name:"Build",       short:"B"},
-  D:{name:"Deload",      short:"DL"}
+  B:{name:"Build",  short:"B"},
+  D:{name:"Deload", short:"DL"}
 };
-const WTYPE = [null,"C","B","B","B","B","B","B","D","B","B","B","B","B","B","B","D"];
-const BLOCK = [null,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2];
-const BLOCKS = [[1,2,3,4,5,6,7],[9,10,11,12,13,14,15]];
-const DEFAULT_BW = 104; // kg, used for pull-up tonnage until a weekly weight is logged
+const WTYPE = [null,"B","B","B","B","B","B","B","D"];
+const BLOCKS = [[1,2,3,4,5,6,7]];
+const DEFAULT_BW = 104; // kg, used for pull-up and dip tonnage until a weekly weight is logged
 const KCAL = 2200, PROTEIN = 180;
 
 // c = compound, legs = +5 kg steps, lat = side-delt raise, opt = optional,
-// mode: "pair" = kg of one dumbbell / one side, both arms together (tonnage ×2 load),
+// mode: "pair" = kg of one dumbbell, both arms together (tonnage ×2 load),
 //       "uni"  = one arm at a time, kg and reps per arm (tonnage ×2 reps),
 // bw = bodyweight exercise (bodyweight + kg), noTn = not counted in tonnage, inc = load step for the ↑ hint
 const EX = {
-  pullup:     {n:"Pull-up (assisted if needed)", ru:"Подтягивания", c:1, bw:1, tip:"Straps are fine. Bodyweight: 0 kg. Assisted machine: assistance as negative kg. Added weight: positive kg."},
-  csrow:      {n:"Chest-supported row (T-bar or machine)", ru:"Тяга с упором грудью", c:1, tip:"Pull to the lower ribs, squeeze the shoulder blades."},
-  latwide:    {n:"Wide-grip lat pulldown", ru:"Тяга верхнего блока широким хватом", tip:"Drive the elbows down to your sides, slight lean back."},
-  dbpress:    {n:"Seated DB shoulder press", ru:"Жим гантелей сидя", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Back supported. On the machine, enter half the stack."},
-  dblat:      {n:"DB lateral raise", ru:"Махи гантелями в стороны", lat:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Lead with the elbow, slight forward lean, no swinging."},
-  revpec:     {n:"Reverse pec deck", ru:"Обратная бабочка", tip:"Rear delts: they make the shoulder look round from the side."},
-  inclcurl:   {n:"Incline DB curl", ru:"Сгибания на наклонной скамье", mode:"pair", inc:2, tip:"kg = one dumbbell. Arms hang behind the body for a full stretch."},
-  incdb:      {n:"Incline DB press, 30°", ru:"Жим гантелей на наклонной", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Main upper-chest lift: elbows ~45°, deep stretch at the bottom."},
-  bench:      {n:"Bench press", ru:"Жим штанги лёжа", c:1, tip:"kg = total on the bar. Medium grip, shoulder blades pinned, controlled tempo."},
-  incdbfly:   {n:"Incline DB fly", ru:"Разводка гантелей на наклонной", mode:"pair", inc:2, tip:"kg = one dumbbell. Deep stretch, slow lowering: upper chest."},
-  hack:       {n:"Hack squat (or leg press, feet mid-low)", ru:"Гакк-приседания", c:1, legs:1, tip:"Full depth you can control, 2–3 s down."},
-  seatcurl:   {n:"Seated leg curl", ru:"Сгибание ног сидя", legs:1, tip:"Lean forward a little for a bigger stretch."},
-  ohcable:    {n:"Overhead cable triceps extension", ru:"Разгибание из-за головы в блоке", tip:"Long head, the biggest part of the triceps."},
-  cablecrunch:{n:"Cable crunch", ru:"Скручивания в блоке", opt:1, tip:"Optional if time. Round the spine, don't pull with the arms."},
-  latneutral: {n:"Neutral-grip lat pulldown", ru:"Тяга верхнего блока параллельным хватом", c:1, tip:"Pull to the upper chest, elbows close to the body."},
-  cablerow1:  {n:"One-arm cable row (or bench-supported DB row)", ru:"Тяга блока одной рукой", c:1, mode:"uni", tip:"kg and reps per arm. Pull the elbow toward your hip."},
-  widerow:    {n:"Seated cable row, wide grip", ru:"Тяга нижнего блока широким хватом", c:1, tip:"Elbows out at ~60°: mid back and rear delts."},
-  leanlat:    {n:"Lean-away DB lateral raise or lateral machine", ru:"Отведение гантели в сторону с наклоном", lat:1, mode:"uni", inc:2, tip:"kg and reps per arm. Last set: drop the weight 30% and keep going (log the main part)."},
-  facepull:   {n:"Face pull or rear-delt cable fly", ru:"Тяга к лицу", tip:"Rear delts and shoulder health."},
-  ezcurl:     {n:"EZ-bar curl", ru:"Сгибание со штангой EZ", tip:"Elbows still, no swinging."},
-  hammer:     {n:"Hammer curl", ru:"Молотки", mode:"pair", inc:2, tip:"kg = one dumbbell."},
-  incbench:   {n:"Incline bench press, 30°", ru:"Жим штанги на наклонной скамье", c:1, tip:"kg = total on the bar. Second upper-chest hit of the week."},
-  pecdeck:    {n:"Pec deck", ru:"Бабочка", tip:"Squeeze 1 s at the front, slow return."},
-  legpress:   {n:"Leg press, feet high and wide", ru:"Жим ногами", c:1, legs:1, tip:"Shifts the work to glutes and hamstrings."},
-  lyingcurl:  {n:"Lying leg curl", ru:"Сгибание ног лёжа", legs:1, tip:"Hips pressed into the pad."},
-  pushdown:   {n:"Rope triceps pushdown", ru:"Разгибание с канатом", tip:"Spread the rope at the bottom."},
-  calf:       {n:"Seated calf raise", ru:"Подъём на носки сидя", opt:1, legs:1, tip:"Optional if time. Pause at the bottom."},
-  kneeraise:  {n:"Hanging knee raise", ru:"Подъём коленей в висе", noTn:1, tip:"Leave kg empty. Not counted in tonnage."}
+  incbench45: {n:"Incline bench press, 45°", ru:"Жим штанги на наклонной скамье 45°", c:1, tip:"kg = total on the bar. 15 and 12 are lighter ramp-up sets, then the work sets of 6. Shoulder blades pinned, head stays on the bench."},
+  incdb45:    {n:"Incline DB press, 45°", ru:"Жим гантелей на наклонной 45°", c:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Elbows about 45°, deep stretch at the bottom."},
+  cablelat1:  {n:"One-arm cable lateral raise", ru:"Отведение руки в сторону в кроссовере", lat:1, mode:"uni", tip:"Replaces the Smith upright row (shoulder impingement and upper-trap/neck load). kg and reps per arm. Lead with the elbow, no shrugging."},
+  dbtri1:     {n:"One-arm DB overhead triceps extension", ru:"Разгибание руки с гантелью из-за головы", mode:"uni", inc:2, tip:"kg and reps per arm. Seated with back support, neck neutral. Switch to a cable if the neck complains."},
+  pullup:     {n:"Pull-up", ru:"Подтягивания", c:1, bw:1, tip:"Bodyweight: 0 kg. Assisted: assistance as negative kg (more help on the 15 and 12). Added weight: positive kg. Keep the neck long, don't reach with the chin."},
+  vbar:       {n:"V-bar lat pulldown", ru:"Тяга верхнего блока V-рукоятью", c:1, tip:"Pull to the upper chest, elbows close to the body."},
+  revpec:     {n:"Reverse pec deck", ru:"Обратная бабочка", tip:"Rear delts: arms slightly bent, wide arc, no shrugging."},
+  inclcurl:   {n:"Incline DB curl", ru:"Сгибания на наклонной скамье", mode:"pair", inc:2, tip:"kg = one dumbbell. Head rests on the bench, arms hang behind the body for a full stretch."},
+  legpress:   {n:"Leg press, feet mid-low", ru:"Жим ногами", c:1, legs:1, tip:"Replaces back squats: no bar on the neck and spine. Head and back stay on the pad, full depth you can control, 2–3 s down."},
+  legext:     {n:"Leg extension", ru:"Разгибание ног сидя", legs:1, tip:"No spinal load. Pause 1 s at the top."},
+  lyingcurl:  {n:"Lying leg curl", ru:"Сгибание ног лёжа", legs:1, tip:"Pump work: hips pressed into the pad, slow lowering."},
+  backext:    {n:"45° back extension (hyperextension)", ru:"Гиперэкстензия", tip:"Hands on chest, never behind the head, neck in line with the spine. kg = plate held. Bodyweight only: 0 (not counted in tonnage)."},
+  seatcurl:   {n:"Seated leg curl", ru:"Сгибание ног сидя", c:1, legs:1, tip:"Heavy hamstring lift instead of Romanian deadlifts: no weight hanging from the shoulders. Lean forward a little for a bigger stretch."},
+  hipthrust:  {n:"Hip thrust (machine or barbell)", ru:"Ягодичный мост", c:1, legs:1, tip:"Upper back on the bench, chin tucked, eyes forward, not at the ceiling. Barbell: pad on the hips."},
+  legpress2:  {n:"Leg press, feet low and narrow", ru:"Жим ногами, узкая низкая постановка", legs:1, tip:"Quad pump: lighter, constant tension, no lockout."},
+  bench:      {n:"Bench press", ru:"Жим штанги лёжа", c:1, tip:"kg = total on the bar. 15 and 12 are ramp-up sets. Medium grip, shoulder blades pinned, head stays on the bench."},
+  dips:       {n:"Dips", ru:"Отжимания на брусьях", c:1, bw:1, tip:"Bodyweight: 0 kg, assisted as negative kg, added weight as positive. Lean forward a little, only as deep as the shoulders allow, chin neutral."},
+  dblat:      {n:"Standing DB lateral raise", ru:"Махи гантелями в стороны стоя", lat:1, mode:"pair", inc:2, tip:"kg = one dumbbell. Lead with the elbow, no swinging or shrugging."},
+  pushdown:   {n:"Triceps pushdown", ru:"Разгибание рук в блоке", tip:"Elbows pinned to your sides."},
+  bbrow:      {n:"Bent-over barbell row", ru:"Тяга штанги в наклоне", c:1, tip:"kg = total on the bar. Neck neutral: look at the floor about 1 m ahead, don't crane up. Torso about 45°, straps are fine. If the neck or lower back complains, switch to a chest-supported row."},
+  hsrow:      {n:"Hammer Strength seated row", ru:"Тяга в рычажном тренажёре сидя", c:1, tip:"kg = total of both sides. Chest on the pad, squeeze the shoulder blades."},
+  facepull:   {n:"Face pull, rope", ru:"Тяга каната к лицу", tip:"Rear delts and posture: pull to the eyes, elbows high, thumbs back."},
+  bbcurl:     {n:"Standing barbell curl", ru:"Подъём штанги на бицепс стоя", tip:"Elbows still, no swinging."}
 };
-// [exercise, sets, reps, RIR, rest]. Same exercises every week; the deload halves the sets.
+// [exercise, sets, reps, RIR, rest, pyramid]. Pyramid = reps per set; the last set is the optional 4th work set.
+// Same exercises every week; the deload halves the sets (pyramids: 15, 12 and one work set).
+const PYR6 = [15,12,6,6,6,6], PYR8 = [15,12,8,8,8,8], PYRRIR = "15 & 12 ramp-up, work sets RIR 1–2";
 const SESSIONS = [
-  {id:"BDA",name:"Back + Delts A",day:"Mon",day1:"Sat",focus:"Lat width, side and rear delts, biceps",plate:"red",ex:[
-    ["pullup",3,"6–10","RIR 1–2","2–3 min"],["csrow",3,"8–12","RIR 1–2","2 min"],["latwide",3,"10–12","RIR 1–2","90 s"],
-    ["dbpress",3,"8–10","RIR 1–2","2 min"],["dblat",4,"12–15","RIR 0–1","60 s"],["revpec",3,"15–20","RIR 0–1","60 s"],["inclcurl",3,"10–12","RIR 0–1","60 s"]]},
-  {id:"CLA",name:"Chest + Legs A",day:"Tue",day1:"Mon",focus:"Upper chest, quads, triceps",plate:"blue",ex:[
-    ["incdb",4,"6–10","RIR 1–2","2–3 min"],["bench",3,"8–12","RIR 1","2 min"],["incdbfly",3,"12–15","RIR 0–1","60 s"],
-    ["hack",3,"8–12","RIR 1–2","2–3 min"],["seatcurl",3,"10–12","RIR 1","90 s"],["ohcable",3,"10–15","RIR 0–1","60 s"],["cablecrunch",2,"12–15","RIR 1","60 s"]]},
-  {id:"BDB",name:"Back + Delts B",day:"Thu",day1:"Thu",focus:"Back thickness, side and rear delts, biceps",plate:"yellow",ex:[
-    ["latneutral",3,"8–12","RIR 1–2","2 min"],["cablerow1",3,"10–12","RIR 1–2","90 s"],["widerow",3,"10–12","RIR 1–2","90 s"],
-    ["leanlat",5,"12–20","RIR 0–1","60 s"],["facepull",3,"15–20","RIR 0–1","60 s"],["ezcurl",3,"8–12","RIR 0–1","60 s"],["hammer",2,"10–12","RIR 0–1","60 s"]]},
-  {id:"CLB",name:"Chest + Legs B",day:"Fri",day1:"Fri",focus:"Upper chest, hamstrings and glutes, triceps",plate:"green",ex:[
-    ["incbench",3,"8–10","RIR 1–2","2–3 min"],["pecdeck",3,"12–15","RIR 0–1","60 s"],["legpress",3,"10–12","RIR 1–2","2 min"],
-    ["lyingcurl",3,"10–12","RIR 1","90 s"],["pushdown",3,"10–12","RIR 0–1","60 s"],["calf",3,"12–15","RIR 0–1","60 s"],["kneeraise",3,"10–15","RIR 1","60 s"]]}
+  {id:"CHA",name:"Chest A",day:"Thu",focus:"Upper chest, side delts, triceps",plate:"red",ex:[
+    ["incbench45",6,"","", "2–3 min",PYR6],["incdb45",4,"8–12","RIR 1–2","2 min"],["cablelat1",4,"12","RIR 0–1","60 s"],["dbtri1",4,"12","RIR 0–1","60 s"]]},
+  {id:"BKA",name:"Back A",day:"Fri",focus:"Lat width, rear delts, biceps",plate:"yellow",ex:[
+    ["pullup",6,"","","2–3 min",PYR6],["vbar",4,"8–12","RIR 1–2","2 min"],["revpec",4,"12","RIR 0–1","60 s"],["inclcurl",4,"12","RIR 0–1","60 s"]]},
+  {id:"LGA",name:"Legs A",day:"Sat",focus:"Quads heavy, hamstrings pump",plate:"blue",ex:[
+    ["legpress",6,"","","2–3 min",PYR6],["legext",4,"8–12","RIR 1–2","90 s"],["lyingcurl",4,"12–15","RIR 0–1","60 s"],["backext",4,"12–15","RIR 1–2","60 s"]]},
+  {id:"CHB",name:"Chest B",day:"Mon",focus:"Chest, side delts, triceps",plate:"red",ex:[
+    ["bench",6,"","","2–3 min",PYR6],["dips",4,"8–12","RIR 1–2","2 min"],["dblat",4,"12","RIR 0–1","60 s"],["pushdown",4,"12","RIR 0–1","60 s"]]},
+  {id:"BKB",name:"Back B",day:"Tue",focus:"Back thickness, rear delts, biceps",plate:"yellow",ex:[
+    ["bbrow",6,"","","2–3 min",PYR8],["hsrow",4,"8–12","RIR 1–2","2 min"],["facepull",4,"12","RIR 0–1","60 s"],["bbcurl",4,"12","RIR 0–1","60 s"]]},
+  {id:"LGB",name:"Legs B",day:"Wed",focus:"Hamstrings and glutes heavy, quads pump",plate:"green",ex:[
+    ["seatcurl",6,"","","2 min",PYR6],["hipthrust",4,"8–12","RIR 1–2","2 min"],["legpress2",4,"15–20","RIR 1","90 s"],["legext",4,"15–20","RIR 0–1","60 s"]]}
 ];
-const MAXSETS = 5;
+const MAXSETS = 6;
 const XP = {session:100,pr:15,z2:50,z2full:10,walk:10,steps:10,neck:5,checkin:20,perfect:100};
 const LOADS = [20,40,60,80,100,120,140,160,180,200];
-const THR   = [0,300,800,1600,2700,4000,5500,7200,9100,11000];
-const LS_KEY = "bd-16wk-log-v1", LS_UI = "bd-16wk-ui-v1";
-const STEPS = [null,9000,9500,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000];
-const NECK = [null]; for (let w=1; w<=NW; w++) NECK[w] = w === 1 ? "Keep the full routine going, 8–10 min each morning." : "Full routine, 8–10 min each morning.";
+const THR   = [0,250,600,1100,1700,2400,3200,4100,5100,6200];
+const LS_KEY = "cbl-8wk-log-v1", LS_UI = "cbl-8wk-ui-v1";
+const STEPS = [null,10000,10000,10000,10000,10000,10000,10000,10000];
+const NECK = [null]; for (let w=1; w<=NW; w++) NECK[w] = "Full routine, 8–10 min each morning. Extra important now that you train six days a week.";
 
 function plan(w, S){
-  const t = WTYPE[w];
-  return S.ex.map(([key, sets, reps, rir, rest])=>{
+  const t = WTYPE[w], dl = t === "D";
+  return S.ex.map(([key, sets, reps, rir, rest, pyr])=>{
     const L = EX[key];
-    return {key, k:S.id + ":" + key, n:L.n, ru:L.ru || "", sets: t === "D" ? Math.ceil(sets/2) : sets, reps, top:Number(String(reps).split("–").pop()),
-      effort: t === "C" ? "RIR 3" : (t === "D" ? "RIR 3+" : rir), rest, tip: L.tip || "",
+    let n = sets, req = sets, setReps = null, top, label;
+    if (pyr){
+      setReps = dl ? pyr.slice(0,3) : pyr.slice();
+      n = setReps.length; req = dl ? n : n - 1;
+      top = pyr[pyr.length-1];
+      label = dl ? setReps.join(", ") : pyr[0] + ", " + pyr[1] + ", 3–4 × " + top;
+      rir = PYRRIR;
+    } else {
+      if (dl) n = req = Math.ceil(sets/2);
+      top = Number(String(reps).split("–").pop());
+      label = n + " × " + reps;
+    }
+    return {key, k:S.id + ":" + key, n:L.n, ru:L.ru || "", sets:n, req, setReps, pyr:!!pyr, reps, top, label,
+      effort: dl ? "RIR 3+" : rir, rest, tip: L.tip || "",
       c:!!L.c, legs:!!L.legs, lat:!!L.lat, opt:!!L.opt, mode:L.mode || "", bw:!!L.bw, noTn:!!L.noTn, inc: L.inc || (L.legs ? 5 : 2.5)};
   });
 }
-function sessionDay(w, S){ return w === 1 ? S.day1 : S.day; }
+function sessionDay(w, S){ return S.day; }
 function dayDate(w, day){ const d = new Date(START); d.setDate(d.getDate() + (w-1)*7 + DAYS.indexOf(day)); return d; }
 function fmtD(d){ return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }
 function weekRange(w){ return fmtD(dayDate(w,DAYS[0])) + " – " + fmtD(dayDate(w,DAYS[6])); }
@@ -453,21 +462,16 @@ function todayWeek(){
   return (w >= 1 && w <= NW) ? w : null;
 }
 function kcal(w){ return KCAL; }
-// Zone 2 walks: Wed plus the weekend. Week 1's Saturday is a gym day.
-function cardioPlan(w){
-  const days = w === 1 ? ["Sun","Wed"] : ["Sat","Sun","Wed"];
-  return days.map((d,i)=>({id:"c"+(i+1), day:d, min:40}));
-}
+// Zone 2 walk on the rest day. After-gym incline walks are logged in each session.
+function cardioPlan(w){ return [{id:"c1", day:"Sun", min:40}]; }
 function meta(w){
   const t = WTYPE[w], T = TYPES[t];
   const deload = t === "D";
-  const phase = "Block " + BLOCK[w] + " · " + T.name;
+  const phase = deload ? "Deload" : "Build week " + w;
   let note = "";
-  if (w===1) note = "Calibration week. First session: Back + Delts A on Saturday 31 Oct, then Chest + Legs A on Monday 2 Nov (this week only). Find your working weights and stop every set at RIR 3. From week 2 you train Mon, Tue, Thu and Fri.";
-  if (w===2) note = "Build weeks start: work at the RIR shown in each row. Add reps first; when every set hits the top of the range, add weight (the green ↑ line tells you).";
-  if (w===8) note = "Deload: same weights, about half the sets, RIR 3+. Tonnage drops on purpose. You come back stronger.";
-  if (w===9) note = "Block 2: same exercises, beat your block 1 numbers. Holiday week: if the gym is closed on 1 Jan, move Chest + Legs B to Saturday 2 Jan.";
-  if (w===16) note = "Final deload. Take photos and measurements and compare with week 1.";
+  if (w===1) note = "New program from today, Thursday 5 Nov. This week, find your working weights: on the pyramid lifts, 15 and 12 are lighter ramp-up sets, then 3–4 sets of 6 at RIR 2. Six sessions a week means recovery matters: sleep 7.5 h+ and keep protein at 180 g. Sunday is the rest day, just the Zone 2 walk.";
+  if (w===2) note = "Work sets at RIR 1–2 from now on. Add reps first; the green ↑ line tells you when to add weight.";
+  if (w===8) note = "Deload: same weights, about half the sets, RIR 3+. Pyramids: 15, 12 and one set of the work weight. If the gym is closed on Friday 25 Dec, do Back A on Sunday. Take photos and measurements and compare with week 1.";
   return {t, T, deload, phase, steps:STEPS[w], kcal:kcal(w), cardio:cardioPlan(w), neck:NECK[w], note};
 }
 
@@ -499,8 +503,6 @@ function blankWeek(w){
   cardioPlan(w).forEach(x=>{ c[x.id] = {done:false,min:null,hr:null}; });
   return {s,c,steps:[null,null,null,null,null,null,null],neck:[false,false,false,false,false,false,false],weight:null,waist:null,notes:""};
 }
-// Exercises renamed on 31 Oct: logged sets carry over to the new name.
-const RENAMED = {dblat:"cablelat", bench:"chestpress", incdbfly:"lhfly", incbench:"incsmith", pecdeck:"inclfly"};
 function n(v){ if (v===null || v===undefined || v==="") return null; const x = Number(v); return Number.isFinite(x) ? x : null; }
 function normalize(o, w){
   const b = blankWeek(w);
@@ -511,8 +513,7 @@ function normalize(o, w){
     b.s[S.id].walk = !!src.walk;
     b.s[S.id].date = typeof src.date === "string" ? src.date.slice(0,20) : "";
     plan(w,S).forEach(E=>{
-      let arr = src.sets && src.sets[E.key];
-      if (!Array.isArray(arr) && src.sets && RENAMED[E.key]) arr = src.sets[RENAMED[E.key]];
+      const arr = src.sets && src.sets[E.key];
       if (!Array.isArray(arr)) return;
       for (let j=0;j<E.sets;j++){ const st = arr[j]; if (st && typeof st === "object") b.s[S.id].sets[E.key][j] = {kg:n(st.kg), r:n(st.r)}; }
     });
@@ -569,7 +570,7 @@ function setStatus(kind, msg){
   statusEl.textContent = t[kind] || "";
 }
 function writeLocal(){ try { localStorage.setItem(LS_KEY, JSON.stringify({weeks:state.weeks, updated:state.updated})); } catch(e) {} }
-function docRef(w){ return db.collection("data/users/" + uid).doc("bd-week-" + String(w).padStart(2,"0")); }
+function docRef(w){ return db.collection("data/users/" + uid).doc("cbl-week-" + String(w).padStart(2,"0")); }
 function save(w){
   state.updated[w] = Date.now();
   writeLocal();
@@ -605,7 +606,7 @@ async function initDb(){
     db = d; uid = id;
     const snap = await db.collection("data/users/" + uid).get();
     const remote = {};
-    snap.docs.forEach(doc=>{ const m = /^bd-week-(\d\d)$/.exec(doc.id); if (m && doc.exists) remote[Number(m[1])] = doc.data(); });
+    snap.docs.forEach(doc=>{ const m = /^cbl-week-(\d\d)$/.exec(doc.id); if (m && doc.exists) remote[Number(m[1])] = doc.data(); });
     dbReady = true;
     const toPush = [];
     for (let w=1; w<=NW; w++){
@@ -674,7 +675,7 @@ function compute(){
     let neck = 0; wk.neck.forEach(b=>{ if (b){ neck++; x += XP.neck; } });
     neckDays += neck;
     if (wk.weight > 0 && wk.waist > 0) x += XP.checkin;
-    const isFull = sdone === 4, perfect = isFull && cdone === creq;
+    const isFull = sdone === SESSIONS.length, perfect = isFull && cdone === creq;
     if (perfect) x += XP.perfect;
     full.push(isFull);
     if (wk.weight > 0) weights.push(wk.weight);
@@ -688,19 +689,19 @@ function compute(){
   const block = BLOCKS.some(ws=>ws.every(w=>full[w]));
   const badges = [
     {name:"First rep", desc:"Finish your first session", plate:"red", ok: sessionsDone >= 1},
-    {name:"Full house", desc:"All 4 sessions in one week", plate:"blue", ok: fullWeeks >= 1},
-    {name:"Block builder", desc:"Every session of a 7-week build block", plate:"yellow", ok: block},
+    {name:"Full house", desc:"All 6 sessions in one week", plate:"blue", ok: fullWeeks >= 1},
+    {name:"Block builder", desc:"Every session of the 7 build weeks", plate:"yellow", ok: block},
     {name:"Iron streak", desc:"4 full weeks in a row", plate:"red", ok: bestStreak >= 4},
-    {name:"Twelve-tonner", desc:"12 t of tonnage in one session", plate:"blue", ok: maxSess >= 12000},
+    {name:"Ten-tonner", desc:"10 t of tonnage in one session", plate:"blue", ok: maxSess >= 10000},
     {name:"Fifty-tonne week", desc:"50 t of tonnage in one week", plate:"red", ok: maxWeek >= 50000},
-    {name:"Engine", desc:"30 Zone 2 walks", plate:"green", ok: z2 >= 30},
+    {name:"Engine", desc:"Every Sunday walk (8)", plate:"green", ok: z2 >= 8},
     {name:"Step machine", desc:"Hit the step target 7/7 days in a week", plate:"green", ok: stepWeek},
-    {name:"Neck guardian", desc:"60 days of neck routine", plate:"blue", ok: neckDays >= 60},
+    {name:"Neck guardian", desc:"45 days of neck routine", plate:"blue", ok: neckDays >= 45},
     {name:"PR hunter", desc:"15 personal records", plate:"red", ok: prCount >= 15},
-    {name:"Boulder shoulders", desc:"120 lateral raise sets logged", plate:"yellow", ok: latSets >= 120},
+    {name:"Boulder shoulders", desc:"50 lateral raise sets logged", plate:"yellow", ok: latSets >= 50},
     {name:"Scale mover", desc:"Weekly weight 4% below your first check-in", plate:"blue", ok: weights.length>1 && weights[weights.length-1] <= weights[0]*0.96},
     {name:"Taper", desc:"Waist 5 cm smaller than your first check-in", plate:"green", ok: waists.length>1 && waists[waists.length-1] <= waists[0]-5},
-    {name:"Finisher", desc:"All 64 sessions done", plate:"yellow", ok: sessionsDone >= 64}
+    {name:"Finisher", desc:"All 48 sessions done", plate:"yellow", ok: sessionsDone >= 48}
   ];
   let level = 0; THR.forEach((t,i)=>{ if (xp >= t) level = i; });
   return {xp, level, prs, prCount, weeks, fullWeeks, bestStreak, badges, latSets, ton};
@@ -750,11 +751,15 @@ function upHint(w, S, E){
     const arr = state.weeks[p].s[S.id].sets[E.key]; if (!arr) continue;
     const logged = arr.filter(st=>st && st.r > 0);
     if (!logged.length) continue;
-    if (logged.length < arr.length || !logged.every(st=>st.r >= E.top)) return "";
-    if (E.bw) return "↑ All sets hit " + E.top + " last time: add a little weight or use less assistance";
-    const kg = Math.max.apply(null, logged.map(st=>st.kg || 0));
-    if (kg > 0) return "↑ All sets hit " + E.top + " last time: go " + (Math.round((kg + E.inc) * 10) / 10) + " kg";
-    return "↑ All sets hit " + E.top + " last time: make it harder";
+    // Pyramid: all 4 work sets at the target reps → add weight to the work sets.
+    const work = E.pyr ? arr.slice(2) : arr;
+    const done = work.filter(st=>st && st.r > 0);
+    if (done.length < work.length || !done.every(st=>st.r >= E.top)) return "";
+    const what = E.pyr ? "All 4 work sets hit " + E.top : "All sets hit " + E.top;
+    if (E.bw) return "↑ " + what + " last time: add a little weight or use less assistance";
+    const kg = Math.max.apply(null, done.map(st=>st.kg || 0));
+    if (kg > 0) return "↑ " + what + " last time: go " + (Math.round((kg + E.inc) * 10) / 10) + " kg" + (E.pyr ? " on the work sets" : "");
+    return "↑ " + what + " last time: make it harder";
   }
   return "";
 }
@@ -766,10 +771,10 @@ const panel = document.getElementById("panel");
 function renderWeek(){
   const w = ui.week, m = meta(w), wk = state.weeks[w];
   const firstOpen = SESSIONS.find(S=>!wk.s[S.id].done);
-  const eff = m.t === "C" ? "Calibration: every set at RIR 3, reps and rest as listed." : (m.deload ? "Deload: about half the sets, same weights, RIR 3+." : "Sets, reps, RIR and rest as listed per exercise.");
+  const eff = m.deload ? "Deload: about half the sets, same weights, RIR 3+. Pyramids: 15, 12 and one work set." : "First lift: 15, 12 ramp-up, then 3–4 work sets (set 6 optional). Everything else: sets, reps, RIR and rest as listed.";
   let h = '<div class="weekhead"><h2>Week '+w+'</h2><p class="phase">'+m.phase+' <span class="dates">'+weekRange(w)+'</span></p><p class="weekxp" id="weekxp"></p>';
   h += '<div class="wknav"><button type="button" class="navbtn" data-nav="-1" aria-label="Previous week"'+(w===1?' disabled':'')+'>‹</button><button type="button" class="navbtn" data-nav="1" aria-label="Next week"'+(w===NW?' disabled':'')+'>›</button></div>';
-  h += '<p class="targets">'+eff+'<br>Steps '+m.steps.toLocaleString("en-US")+' a day · '+m.kcal.toLocaleString("en-US")+' kcal, '+PROTEIN+' g protein · Zone 2 walks '+andList(m.cardio.map(c=>LONGDAY[c.day]))+', '+m.cardio[0].min+' min.</p>';
+  h += '<p class="targets">'+eff+'<br>Steps '+m.steps.toLocaleString("en-US")+' a day · '+m.kcal.toLocaleString("en-US")+' kcal, '+PROTEIN+' g protein · Zone 2 walk on '+andList(m.cardio.map(c=>LONGDAY[c.day]))+', '+m.cardio[0].min+' min, plus the optional 10 min after each session.</p>';
   h += '<p class="weekton" id="weekton"></p></div>';
   if (m.note) h += '<p class="note">'+m.note+'</p>';
 
@@ -777,27 +782,27 @@ function renderWeek(){
     const open = firstOpen && firstOpen.id === S.id ? " open" : "";
     const day = sessionDay(w,S);
     h += '<details class="session" style="--plate:var(--'+S.plate+')"'+open+'><summary><span class="sname">'+S.name+'</span><span class="sday">'+day+' '+fmtD(dayDate(w,day))+'</span><span class="sfocus">'+S.focus+'</span><span class="sstatus" id="st-'+S.id+'"></span></summary>';
-    h += '<p class="warm"><b>Warm-up:</b> 5 min treadmill, chin tucks 5 × 5 s, band pull-aparts 2 × 15, then 2–3 ramp-up sets of the first lift (~50% × 10, ~70% × 5, ~85% × 2). <b>Tempo:</b> 2–3 s on the way down.</p>';
+    h += '<p class="warm"><b>Warm-up:</b> 5 min treadmill, chin tucks 5 × 5 s, band pull-aparts 2 × 15, then 1–2 light sets of the first lift before its 15 and 12. <b>Tempo:</b> 2–3 s on the way down.</p>';
     h += '<div class="scroll"><table class="log"><thead><tr><th>Exercise</th><th>Target</th>';
     for (let i=0;i<MAXSETS;i++) h += '<th>Set '+(i+1)+'</th>';
     h += '</tr></thead><tbody>';
     plan(w,S).forEach(E=>{
       const up = upHint(w,S,E);
       h += '<tr><th scope="row">'+esc(E.n)+(E.opt?'<span class="opt">optional</span>':'')+'<span class="pr" id="pr-'+S.id+'-'+E.key+'" hidden>PR</span>'+(E.ru?'<span class="ru">'+esc(E.ru)+'</span>':'')+(E.tip?'<span class="tip">'+esc(E.tip)+'</span>':'')+(up?'<span class="up">'+esc(up)+'</span>':'')+'</th>';
-      h += '<td class="target">'+E.sets+' × '+E.reps+(E.mode==="uni"?' / arm':'')+'<span class="tip">'+E.effort+' · rest '+E.rest+'</span><span class="tn" id="tn-'+S.id+'-'+E.key+'"></span></td>';
+      h += '<td class="target">'+E.label+(E.mode==="uni"?' / arm':'')+'<span class="tip">'+E.effort+' · rest '+E.rest+(E.pyr && E.req < E.sets ? ' · set 6 optional' : '')+'</span><span class="tn" id="tn-'+S.id+'-'+E.key+'"></span></td>';
       for (let i=0;i<MAXSETS;i++){
         if (i >= E.sets){ h += '<td class="empty"></td>'; continue; }
         const prev = prevSet(w, S, E, i);
         const pk = prev ? prev.kg : null;
         const base = 'data-k="set" data-s="'+S.id+'" data-x="'+E.key+'" data-i="'+i+'"';
-        h += '<td class="set" data-label="'+(i+1)+'"><span class="pair"><input type="number" inputmode="decimal" step="0.5" '+base+' data-f="kg" placeholder="'+(prev && pk !== null ? pk : "kg")+'" aria-label="'+esc(E.n)+' set '+(i+1)+' kg">×<input type="number" inputmode="numeric" min="0" '+base+' data-f="r" placeholder="'+(prev?prev.r:"reps")+'" aria-label="'+esc(E.n)+' set '+(i+1)+' reps"></span></td>';
+        h += '<td class="set'+(i >= E.req ? ' optset' : '')+'" data-label="'+(i+1)+'"><span class="pair"><input type="number" inputmode="decimal" step="0.5" '+base+' data-f="kg" placeholder="'+(prev && pk !== null ? pk : "kg")+'" aria-label="'+esc(E.n)+' set '+(i+1)+' kg">×<input type="number" inputmode="numeric" min="0" '+base+' data-f="r" placeholder="'+(prev ? prev.r : (E.setReps ? E.setReps[i] : "reps"))+'" aria-label="'+esc(E.n)+' set '+(i+1)+' reps"></span></td>';
       }
       h += '</tr>';
     });
     h += '</tbody></table></div><div class="sfoot"><button type="button" class="donebtn" data-k="done" data-s="'+S.id+'" aria-pressed="false"></button>';
     h += '<label class="walk"><input type="checkbox" data-k="walk" data-s="'+S.id+'"> 10-min incline walk after (+10 XP)</label>';
     h += '<span class="ston" id="ston-'+S.id+'"></span>';
-    h += '<span class="hint">Grey numbers are your last set (deloads keep the same weights). Beat one to score a PR.</span></div></details>';
+    h += '<span class="hint">Grey numbers are your last set (before you log one: the target reps). Beat one to score a PR.</span></div></details>';
   });
 
   h += '<div class="block"><h3>Cardio</h3><table class="ctable"><thead><tr><th>Session</th><th>Done</th><th>Minutes</th><th>Avg HR</th></tr></thead><tbody>';
@@ -897,7 +902,7 @@ function renderStats(silent){
   SESSIONS.forEach(S=>{
     const ss = wk.s[S.id], TS = TW.s[S.id];
     let logged = 0, total = 0;
-    plan(w,S).forEach(E=>{ if (!E.opt) total += E.sets; ss.sets[E.key].forEach(st=>{ if (st.r > 0 && !E.opt) logged++; }); });
+    plan(w,S).forEach(E=>{ if (!E.opt) total += E.req; ss.sets[E.key].forEach((st,i)=>{ if (st.r > 0 && !E.opt && i < E.req) logged++; }); });
     const st = document.getElementById("st-"+S.id);
     if (st){ st.textContent = (ss.done ? "Done" + (ss.date ? ", " + ss.date : "") : logged + " / " + total + " sets logged") + (TS.v > 0 ? " · " + fmtT(TS.v) : ""); st.classList.toggle("done", ss.done); }
     const btn = panel.querySelector('.donebtn[data-s="'+S.id+'"]');
@@ -920,7 +925,7 @@ function renderStats(silent){
   let ov = '<thead><tr><th>Week</th><th>Dates</th><th>Phase</th><th>Strength</th><th>Tonnage</th><th>Avg kg/rep</th><th>Cardio</th><th>Avg steps</th><th>Neck days</th><th>Weight</th><th>Waist</th><th>XP</th></tr></thead><tbody>';
   for (let i=1; i<=NW; i++){
     const r = R.weeks[i], wi = state.weeks[i], t = R.ton[i];
-    ov += '<tr class="'+(i===w?"current":"")+'"><td><button type="button" class="linkbtn" data-week="'+i+'">Week '+i+'</button></td><td>'+weekRange(i)+'</td><td>'+meta(i).phase+'</td><td>'+r.sdone+'/4</td><td>'+(t.v ? fmtT(t.v) : "–")+'</td><td>'+(t.n ? (t.v/t.n).toFixed(1) : "–")+'</td><td>'+r.cdone+'/'+r.creq+'</td><td>'+(r.stepAvg ? r.stepAvg.toLocaleString("en-US") : "–")+'</td><td>'+r.neck+'/7</td><td>'+(wi.weight ? wi.weight+" kg" : "–")+'</td><td>'+(wi.waist ? wi.waist+" cm" : "–")+'</td><td>'+r.xp+(r.perfect?" ★":"")+'</td></tr>';
+    ov += '<tr class="'+(i===w?"current":"")+'"><td><button type="button" class="linkbtn" data-week="'+i+'">Week '+i+'</button></td><td>'+weekRange(i)+'</td><td>'+meta(i).phase+'</td><td>'+r.sdone+'/'+SESSIONS.length+'</td><td>'+(t.v ? fmtT(t.v) : "–")+'</td><td>'+(t.n ? (t.v/t.n).toFixed(1) : "–")+'</td><td>'+r.cdone+'/'+r.creq+'</td><td>'+(r.stepAvg ? r.stepAvg.toLocaleString("en-US") : "–")+'</td><td>'+r.neck+'/7</td><td>'+(wi.weight ? wi.weight+" kg" : "–")+'</td><td>'+(wi.waist ? wi.waist+" cm" : "–")+'</td><td>'+r.xp+(r.perfect?" ★":"")+'</td></tr>';
   }
   document.getElementById("overview").innerHTML = ov + '</tbody>';
 
@@ -995,7 +1000,7 @@ const importFile = document.getElementById("importFile"), importApply = document
 let pendingImport = null;
 document.getElementById("exportBtn").addEventListener("click", async ()=>{
   const weeks = {}; for (let w=1; w<=NW; w++) weeks[w] = state.weeks[w];
-  const json = JSON.stringify({app:"16-weeks-back-delts",version:1,exportedAt:new Date().toISOString(),weeks,updated:state.updated}, null, 2);
+  const json = JSON.stringify({app:"8-weeks-chest-back-legs",version:1,exportedAt:new Date().toISOString(),weeks,updated:state.updated}, null, 2);
   const fname = "training-log-" + new Date().toISOString().slice(0,10) + ".json";
   const C = window.claude;
   if (C && typeof C.use === "function"){
@@ -1020,7 +1025,7 @@ importFile.addEventListener("change", async ()=>{
   try {
     const data = JSON.parse(await f.text());
     const src = data && data.weeks;
-    if (data && (data.app === "12-weeks-on-the-bar" || data.app === "13-weeks-push-pull")) throw new Error("old");
+    if (data && (data.app === "12-weeks-on-the-bar" || data.app === "13-weeks-push-pull" || data.app === "16-weeks-back-delts")) throw new Error("old");
     if (!src || typeof src !== "object") throw new Error("shape");
     const weeks = [null]; let filled = 0;
     for (let w=1; w<=NW; w++){ weeks[w] = normalize(src[w], w); if (hasData(weeks[w], w)) filled++; }
@@ -1028,7 +1033,7 @@ importFile.addEventListener("change", async ()=>{
     importMsg.textContent = filled + " week" + (filled===1 ? "" : "s") + " with entries in " + f.name + ".";
     importApply.hidden = false;
   } catch(e){
-    importMsg.textContent = e && e.message === "old" ? "That backup is from an older program log (Upper/Lower or Push/Pull), which doesn't fit this program. Open it in the Push/Pull log page instead." : "That file isn't a backup from this log. Choose a .json file made with Export backup.";
+    importMsg.textContent = e && e.message === "old" ? "That backup is from an older program log, which doesn't fit this program. Import it on the matching old log page (links above)." : "That file isn't a backup from this log. Choose a .json file made with Export backup.";
   }
   importFile.value = "";
 });
@@ -1048,7 +1053,7 @@ importApply.addEventListener("click", ()=>{
 
 /* ---------- GitHub sync (GitHub Pages version) ---------- */
 // Same GitHub connection as before; this program gets its own file so log.json and log-push-pull.json stay untouched.
-const GH_KEY = "pp-12wk-gh-v1", GH_FILE = "log-back-delts.json";
+const GH_KEY = "pp-12wk-gh-v1", GH_FILE = "log-chest-back-legs.json";
 let gh = null;
 if (STANDALONE){ try { const g = JSON.parse(localStorage.getItem(GH_KEY) || "null"); if (g && g.owner && g.repo && g.token) gh = g; } catch(e) {} }
 let ghSha = null, ghTimer = null, ghChain = Promise.resolve(), ghLast = null;
@@ -1094,8 +1099,8 @@ async function ghPull(){
 async function ghPush(retried){
   const weeks = {}; for (let w=1; w<=NW; w++) weeks[w] = state.weeks[w];
   const body = {
-    message: "Back + Delts / Chest + Legs log update " + new Date().toISOString().slice(0,16).replace("T"," "),
-    content: b64enc(JSON.stringify({app:"16-weeks-back-delts", version:1, weeks, updated:state.updated}))
+    message: "Chest / Back / Legs log update " + new Date().toISOString().slice(0,16).replace("T"," "),
+    content: b64enc(JSON.stringify({app:"8-weeks-chest-back-legs", version:1, weeks, updated:state.updated}))
   };
   if (ghSha) body.sha = ghSha;
   const r = await ghFetch("/contents/" + GH_FILE, {method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});

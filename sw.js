@@ -1,9 +1,10 @@
 // Keeps the log working offline at the gym. Bump CACHE when you change files.
-const CACHE = "16wk-backdelts-v4";
+const CACHE = "8wk-cbl-v1";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  // cache:"reload" skips the browser's HTTP cache, so a new version is stored fresh, not a stale copy.
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE.map(u => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys()
