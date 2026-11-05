@@ -1,5 +1,5 @@
 // Keeps the log working offline at the gym. Bump CACHE when you change files.
-const CACHE = "8wk-cbl-v1";
+const CACHE = "8wk-cbl-v2";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
